@@ -1,0 +1,7 @@
+{
+  "name": "filevisor",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
