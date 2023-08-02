@@ -7,6 +7,11 @@ This project is built with *Ionic/Angular and AngularFire (Auth, Firestore, Stor
 - Run ```nvm use```, to get use the right node version.
 - Install the Ionic CLI with ```npm install -g @ionic/cli```
 - Run ```npm install``` to install the require packages.
+- Install Ionic CLI with ```npm i -g @ionic/cli@7.1.1```
+- Install Firebase tools with ```npm i -g firebase-tools```
+
+### Run emulators for local development.
+- Run ```firebase emulators:start```
 
 ### Resources
 - [Ionic docs](https://ionicframework.com/docs/)
