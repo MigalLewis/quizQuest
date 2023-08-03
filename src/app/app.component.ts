@@ -10,6 +10,14 @@ import { IonicModule } from '@ionic/angular';
   imports: [IonicModule, RouterLink, RouterLinkActive, CommonModule],
 })
 export class AppComponent {
+  menuOptions: { option: string, url: string }[];
 
-  constructor() {}
+  constructor() {
+    this.menuOptions = [
+      { option: 'Profile', url: ''},
+      { option: 'Settings', url: '' },
+      { option: 'Help', url: ''},
+      { option: 'About', url: ''}
+    ];
+  }
 }
