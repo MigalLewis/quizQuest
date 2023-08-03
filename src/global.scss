@@ -24,3 +24,9 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+
+/* Fonts */
+@font-face {
+    font-family: "Play";
+    src: local("Play"), url(./assets/fonts/Play/Play-Regular.ttf) format("truetype");
+}
