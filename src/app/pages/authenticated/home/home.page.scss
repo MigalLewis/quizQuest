@@ -8,7 +8,7 @@
 
     h4 {
         color: $light-blue-color;
-        font-family: Montserrat;
+        font-family: $montserrat-font;
         font-size: 1.5rem;
         font-style: normal;
         font-weight: 400;
@@ -22,7 +22,7 @@
     ion-text {
         color: $white-color;
         text-align: center;
-        font-family: Lato;
+        font-family: $lato-font;
         font-size: 1.5rem;
         font-style: normal;
         font-weight: 500;

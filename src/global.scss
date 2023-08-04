@@ -36,3 +36,13 @@ ion-content {
     font-family: "Play";
     src: local("Play"), url(./assets/fonts/Play/Play-Regular.ttf) format("truetype");
 }
+
+@font-face {
+    font-family: "Montserrat";
+    src: local("Montserrat"), url(./assets/fonts/Montserrat/Montserrat-VariableFont_wght.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: "Lato";
+    src: local("Lato"), url(./assets/fonts/Lato/Lato-Regular.ttf) format("truetype");
+}
