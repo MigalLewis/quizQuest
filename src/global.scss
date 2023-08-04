@@ -25,6 +25,12 @@
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
+/* Global stylying */
+ion-content {
+    --padding-start: 1.5rem;
+    --padding-end: 1.5rem;
+}
+
 /* Fonts */
 @font-face {
     font-family: "Play";
