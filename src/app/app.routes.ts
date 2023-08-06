@@ -1,14 +1,21 @@
 import { Routes } from '@angular/router';
-import { AppComponent } from './app.component';
+import { AuthenticatedPage } from './pages/authenticated/authenticated.page';
+import { HomePage } from './pages/authenticated/home/home.page';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'authenticated/home',
     pathMatch: 'full'
   },
   {
-    path: 'home',
-    loadComponent: () => import('./pages/authenticated/home/home.page').then( m => m.HomePage)
+    path: 'authenticated',
+    component: AuthenticatedPage,
+    children: [
+      {
+        path: 'home',
+        component: HomePage
+      }
+    ]
   },
 ];
