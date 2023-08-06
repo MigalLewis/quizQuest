@@ -1,17 +1,21 @@
-import { ComponentFixture, TestBed, async, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { AuthenticatedPage } from './authenticated.page';
+import { provideRouter } from '@angular/router';
 
 describe('AuthenticatedPage', () => {
   let component: AuthenticatedPage;
   let fixture: ComponentFixture<AuthenticatedPage>;
 
-  beforeEach(waitForAsync(() => {
-    fixture = TestBed.createComponent(AuthenticatedPage);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  }));
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [AuthenticatedPage],
+      providers: [provideRouter([])],
+    }).compileComponents();
+  });
 
-  xit('should create', () => {
-    expect(component).toBeTruthy();
+  it('should create', () => {
+    const fixture = TestBed.createComponent(AuthenticatedPage);
+    const app = fixture.componentInstance;
+    expect(app).toBeTruthy();
   });
 });
