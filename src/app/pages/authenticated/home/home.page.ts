@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { CreateFolderComponent } from 'src/app/components/create-folder/create-folder.component';
 import { FolderComponent } from 'src/app/components/folder/folder.component';
+import { FolderActionsComponent } from 'src/app/components/folder-actions/folder-actions.component';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +16,8 @@ import { FolderComponent } from 'src/app/components/folder/folder.component';
     CommonModule, 
     FormsModule, 
     CreateFolderComponent, 
-    FolderComponent
+    FolderComponent,
+    FolderActionsComponent
   ]
 })
 export class HomePage implements OnInit {
