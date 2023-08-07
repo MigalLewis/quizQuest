@@ -8,15 +8,11 @@ describe('CreateFolderComponent', () => {
   let fixture: ComponentFixture<CreateFolderComponent>;
 
   beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [ CreateFolderComponent ],
-      imports: [IonicModule.forRoot()]
-    }).compileComponents();
-
     fixture = TestBed.createComponent(CreateFolderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
+
 
   it('should create', () => {
     expect(component).toBeTruthy();
