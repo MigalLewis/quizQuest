@@ -19,7 +19,7 @@
       <div class="menu-options">
         <ul>
           <li *ngFor="let option of menuOptions">
-            <a href="">{{ option.option }}</a>
+            <a [routerLink]="option.url">{{ option.option }}</a>
           </li>
         </ul>
       </div>
