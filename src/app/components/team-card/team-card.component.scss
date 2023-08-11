@@ -1,0 +1,47 @@
+@import '../../../theme/variables.scss';
+
+ion-card {
+    --background: transparent;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+
+    .image {
+        border-radius: 50%;
+        overflow: hidden;
+        width: 13.75rem;
+        height: 13.75rem;
+    }
+
+    ion-card-title {
+        color: $white-color;
+        font-family: $montserrat-font;
+        font-size: 1.125rem;
+        font-weight: 700;
+        line-height: normal;
+    }
+
+    ion-card-subtitle {
+        color: #FFF;
+        text-align: center;
+        font-family: Montserrat;
+        font-size: .813rem;
+        font-weight: 700;
+        line-height: normal;
+    }
+
+    ion-text a:not(:last-child) {
+        margin-right: .5rem;
+    }
+
+    ion-text ion-icon {
+        color: #FFF;
+        text-align: center;
+        font-family: Montserrat;
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 700;
+    }
+}

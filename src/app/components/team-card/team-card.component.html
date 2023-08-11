@@ -1,0 +1,17 @@
+<ion-card *ngFor="let member of team">
+  <div class="image">
+    <ion-img [src]="member.imageUrl"></ion-img>
+  </div>
+  <ion-card-header>
+    <ion-card-title> {{ member.name }} </ion-card-title>
+    <ion-card-subtitle>{{ member.role }}</ion-card-subtitle>
+  </ion-card-header>
+  <ion-card-content>
+
+    <ion-text *ngIf="member.socialMediaPlatforms">
+      <a *ngFor="let platform of member.socialMediaPlatforms" [href]="platform.url">
+        <ion-icon [name]="platform.icon"></ion-icon>
+      </a>
+    </ion-text>
+  </ion-card-content>
+</ion-card>
