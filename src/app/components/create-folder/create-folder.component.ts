@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
@@ -11,9 +11,16 @@ import { IonicModule } from '@ionic/angular';
   imports: [IonicModule, CommonModule, FormsModule]
 })
 export class CreateFolderComponent  implements OnInit {
+  @Output() closeModal: EventEmitter<any>;
 
-  constructor() { }
+  constructor() { 
+    this.closeModal = new EventEmitter();
+  }
 
   ngOnInit() {}
+
+  onCloseModal() {
+    this.closeModal.emit();
+  }
 
 }
