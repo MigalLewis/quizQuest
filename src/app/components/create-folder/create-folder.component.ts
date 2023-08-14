@@ -11,16 +11,25 @@ import { IonicModule } from '@ionic/angular';
   imports: [IonicModule, CommonModule, FormsModule]
 })
 export class CreateFolderComponent  implements OnInit {
+
+  folderName: string;
   @Output() closeModal: EventEmitter<any>;
+  @Output() createFolder: EventEmitter<string>;
 
   constructor() { 
+    this.folderName = '';
     this.closeModal = new EventEmitter();
+    this.createFolder = new EventEmitter();
   }
 
   ngOnInit() {}
 
   onCloseModal() {
     this.closeModal.emit();
+  }
+
+  onCreateFolder() {
+    this.createFolder.emit(this.folderName);
   }
 
 }

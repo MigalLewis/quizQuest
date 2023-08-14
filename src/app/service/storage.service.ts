@@ -12,13 +12,23 @@ export class StorageService {
     this.init();
   }
 
-  async init() {
+  private async init() {
     await this.storage.defineDriver(cordovaSQLiteDriver);
     const storage = await this.storage.create();
     this._storage = storage;
   }
 
-  public createFolder(key: string, value: any) {
-    this._storage?.set(key, value);
+  public async createFolder(foldername: string) {
+    const key = foldername.replace(' ', '_').toLowerCase();
+    const storedKeys = await this.storage.keys();
+    
+    try {
+      if(storedKeys.includes(key)) {
+        throw new Error('This folder already exists!');
+      }
+      return await this._storage?.set( key, { name: foldername });
+    } catch (error) {
+      return error;
+    }
   }
 }
