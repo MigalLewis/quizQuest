@@ -1,7 +1,8 @@
 <ion-content [fullscreen]="true">
   <ion-row class="add-folder-action">
     <h4>My Folders :</h4>
-    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+    <svg id="open-custom-dialog" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"
+      fill="none">
       <circle cx="20" cy="20" r="20" fill="white" />
       <path d="M20 15V25" stroke="#6EAFDF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
       <path d="M15 20H25" stroke="#6EAFDF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -11,11 +12,18 @@
     <ion-text>You currently have no shared folders</ion-text>
 
   </ion-row>
-  <app-create-folder></app-create-folder>
 
   <div class="created-folders">
     <app-folder></app-folder>
   </div>
+
+  <ion-modal id="create-folder-modal" #modal trigger="open-custom-dialog">
+    <ng-template>
+      <div class="wrapper">
+        <app-create-folder (closeModal)="modal.dismiss()"></app-create-folder>
+      </div>
+    </ng-template>
+  </ion-modal>
 
   <app-folder-actions></app-folder-actions>
 </ion-content>
