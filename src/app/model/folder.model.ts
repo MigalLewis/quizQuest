@@ -1,6 +1,6 @@
 export interface Folder {
     id: string;
     name:string;
-    dateCreated: Date;
-    modifiedDate: Date;
+    dateCreated: number;
+    modifiedDate: number;
   }
