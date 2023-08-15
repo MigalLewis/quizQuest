@@ -2,6 +2,9 @@ import { enableProdMode, importProvidersFrom } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { RouteReuseStrategy, provideRouter } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { IonicStorageModule } from '@ionic/storage-angular';
+import { Drivers } from '@ionic/storage';
+import CordovaSQLiteDriver from 'localforage-cordovasqlitedriver';
 
 import { routes } from './app/app.routes';
 import { AppComponent } from './app/app.component';
@@ -11,6 +14,7 @@ import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { provideAuth, getAuth, connectAuthEmulator } from '@angular/fire/auth';
 import { provideStorage, getStorage, connectStorageEmulator } from '@angular/fire/storage';
 import { connectFirestoreEmulator, getFirestore, provideFirestore } from '@angular/fire/firestore';
+
 
 if (environment.production) {
   enableProdMode();
@@ -39,6 +43,10 @@ bootstrapApplication(AppComponent, {
         return storage
       })
     ),
+    importProvidersFrom(IonicStorageModule.forRoot({
+      name: '__localdb',
+     driverOrder: [CordovaSQLiteDriver._driver, Drivers.IndexedDB, Drivers.LocalStorage]
+    })),
     provideRouter(routes),
   ],
 });

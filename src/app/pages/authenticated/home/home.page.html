@@ -20,7 +20,7 @@
   <ion-modal id="create-folder-modal" #modal trigger="open-custom-dialog">
     <ng-template>
       <div class="wrapper">
-        <app-create-folder (closeModal)="modal.dismiss()"></app-create-folder>
+        <app-create-folder (closeModal)="modal.dismiss()" (createFolder)="createFolder($event)"></app-create-folder>
       </div>
     </ng-template>
   </ion-modal>
