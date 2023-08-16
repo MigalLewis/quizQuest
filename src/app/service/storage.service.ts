@@ -13,9 +13,9 @@ export class StorageService {
     this.init();
   }
 
-  private async init() {
+  public async init() {
     await this.storage.defineDriver(cordovaSQLiteDriver);
-    await this.storage.create();
+    return await this.storage.create();
   }
 
   async addFolder(newFolder: Folder): Promise<any> {
