@@ -28,10 +28,19 @@ export class HomePage implements OnInit {
   constructor(private storageService: StorageService) { }
 
   ngOnInit() {
+    
+    
   }
 
+  
+
   async createFolder(foldername: string) {
-    this.storageService.createFolder(foldername);
+    await this.storageService.addFolder({
+      id: foldername.replace(' ', '_').toLowerCase(),
+      name: foldername, 
+      dateCreated: Date.now(),
+      modifiedDate: Date.now()
+    });
     await this.modal.dismiss();
   }
 
