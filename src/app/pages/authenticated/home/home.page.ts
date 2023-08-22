@@ -17,8 +17,7 @@ import { StorageService } from 'src/app/service/storage.service';
     CommonModule, 
     FormsModule, 
     CreateFolderComponent, 
-    FolderComponent,
-    FolderActionsComponent
+    FolderComponent
   ]
 })
 export class HomePage implements OnInit {
