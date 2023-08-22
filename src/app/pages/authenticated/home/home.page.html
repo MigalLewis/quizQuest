@@ -8,13 +8,13 @@
       <path d="M15 20H25" stroke="#6EAFDF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
     </svg>
   </ion-row>
-  <ion-row class="shared-folders-empty" *ngIf="false">
+  <ion-row class="shared-folders-empty" *ngIf="folders.length === 0">
     <ion-text>You currently have no shared folders</ion-text>
 
   </ion-row>
 
   <div class="created-folders">
-    <app-folder></app-folder>
+    <app-folder *ngFor="let folder of folders" [folder]="folder"></app-folder>
   </div>
 
   <ion-modal id="create-folder-modal" #modal trigger="open-custom-dialog">
