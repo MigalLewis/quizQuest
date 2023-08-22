@@ -1,4 +1,4 @@
-<div class="folder">
+<div class="folder" id="open-modal">
   <svg xmlns="http://www.w3.org/2000/svg" width="125" height="80" viewBox="0 0 125 80" fill="none">
     <path
       d="M8.22614 49.1279C3.62581 64.5213 15.1551 80 31.2212 80H86.1683C96.811 80 106.182 72.9911 109.19 62.7823L116.808 36.9242C121.337 21.5504 109.813 6.14183 93.7863 6.14183H69.3784C66.3374 6.14183 63.4507 4.80297 61.4864 2.48156C61.3039 2.26579 61.132 2.04132 60.9378 1.83593C60.3718 1.23723 58.9311 0.0125185 56.6155 0.0125185L53.3419 0.0125201C46.9206 0.0125244 33.4242 0.0125336 28.4207 0.0125185C22.1417 0.0124998 22.8277 -0.140714 22.5978 0.625445C22.4382 1.15749 22.2047 2.05901 22.0769 2.56028C22.0151 2.80286 21.9508 3.04437 21.8825 3.28522L21.0726 6.14183L8.22614 49.1279Z"
@@ -12,3 +12,57 @@
     <ion-icon name="ellipsis-vertical"></ion-icon>
   </div>
 </div>
+
+<ion-modal #modal trigger="open-modal" [initialBreakpoint]="0.15" id="folder-actions">
+  <ng-template>
+    <div class="wrapper">
+      <ion-row class="folder-actions">
+        <ion-col>
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <circle cx="20" cy="20" r="20" fill="white" />
+            <path
+              d="M20 13C13.6364 13 10 20 10 20C10 20 13.6364 27 20 27C26.3636 27 30 20 30 20C30 20 26.3636 13 20 13Z"
+              stroke="#6EAFDF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path
+              d="M20 23C21.6569 23 23 21.6569 23 20C23 18.3431 21.6569 17 20 17C18.3431 17 17 18.3431 17 20C17 21.6569 18.3431 23 20 23Z"
+              stroke="#6EAFDF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <ion-text>View</ion-text>
+        </ion-col>
+        <ion-col>
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <circle cx="20" cy="20" r="20" fill="white" />
+            <path d="M17.3867 20.7692H22.0021" stroke="#6EAFDF" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+            <path d="M17.3867 23.8462H23.5406" stroke="#6EAFDF" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+            <path d="M25.8474 26.9231H15.0781V13.0769H21.232H22.0012L25.8474 16.9231V17.6923V26.9231Z" stroke="#6EAFDF"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path
+              d="M21.2324 13.0769V16.1538C21.2324 16.9231 22.0017 17.6923 22.7709 17.6923C23.5401 17.6923 25.2068 17.6923 25.8478 17.6923"
+              stroke="#6EAFDF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M13 10H15.0769V11H13V13.0769H12V11V10H13ZM12 26.9231V29V30H13H15.0769V29H13V26.9231H12ZM25.8462 30H27.9231H28.9231V29V26.9231H27.9231V29H25.8462V30ZM28.9231 11V13.0769H27.9231V11H25.8462V10H27.9231H28.9231V11Z"
+              fill="#6EAFDF" />
+          </svg>
+          <ion-text>Scan</ion-text>
+        </ion-col>
+        <ion-col>
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <circle cx="20" cy="20" r="20" fill="white" />
+            <path
+              d="M15 19V18C15 15.2386 17.2386 13 20 13C22.7614 13 25 15.2386 25 18V19C27.2091 19 29 20.7909 29 23C29 24.4806 28.1956 25.8084 27 26.5"
+              stroke="#6EAFDF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path
+              d="M16.2401 19.1959C15.8496 19.0688 15.4329 19 15 19C12.7909 19 11 20.7909 11 23C11 24.4806 11.8044 25.8084 13 26.5"
+              stroke="#6EAFDF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M20 21V30" stroke="#6EAFDF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M23 24L20 21L17 24" stroke="#6EAFDF" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+          <ion-text>Upload</ion-text>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ng-template>
+</ion-modal>

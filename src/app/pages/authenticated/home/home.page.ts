@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { IonModal, IonicModule } from '@ionic/angular';
 import { CreateFolderComponent } from 'src/app/components/create-folder/create-folder.component';
 import { FolderComponent } from 'src/app/components/folder/folder.component';
-import { FolderActionsComponent } from 'src/app/components/folder-actions/folder-actions.component';
 import { StorageService } from 'src/app/service/storage.service';
 
 @Component({
@@ -17,8 +16,7 @@ import { StorageService } from 'src/app/service/storage.service';
     CommonModule, 
     FormsModule, 
     CreateFolderComponent, 
-    FolderComponent,
-    FolderActionsComponent
+    FolderComponent
   ]
 })
 export class HomePage implements OnInit {

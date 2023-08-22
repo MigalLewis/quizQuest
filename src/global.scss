@@ -47,7 +47,7 @@ ion-content {
     src: local("Lato"), url(./assets/fonts/Lato/Lato-Regular.ttf) format("truetype");
 }
 
-/* modal */
+/* create folder modal */
 ion-modal#create-folder-modal {
     --width: 90%;
     --height: fit-content;
@@ -58,4 +58,16 @@ ion-modal#create-folder-modal {
 
 ion-modal#create-folder-modal .wrapper {
     margin-bottom: 10px;
+}
+
+/* folder actions modal */
+ion-modal#folder-actions {
+    --border-radius: 0.75rem 0.75rem 0rem 0rem;
+    --background: rgba(0, 0, 0, 0.25);
+}
+
+ion-modal#folder-actions .wrapper {
+    display: flex;
+    align-items: center;
+    padding-top: 1rem;
 }
