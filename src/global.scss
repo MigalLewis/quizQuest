@@ -61,12 +61,12 @@ ion-modal#create-folder-modal .wrapper {
 }
 
 /* folder actions modal */
-ion-modal#folder-actions {
+ion-modal.show-folder-actions {
     --border-radius: 0.75rem 0.75rem 0rem 0rem;
-    --background: rgba(0, 0, 0, 0.25);
+    --background: rgba(0, 0, 0, 0.65);
 }
 
-ion-modal#folder-actions .wrapper {
+ion-modal.show-folder-actions .wrapper {
     display: flex;
     align-items: center;
     padding-top: 1rem;
