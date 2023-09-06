@@ -1,11 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonModal, IonicModule, LoadingController } from '@ionic/angular';
+import { IonModal, IonicModule, LoadingController, ModalController } from '@ionic/angular';
 import { CreateFolderComponent } from 'src/app/components/create-folder/create-folder.component';
 import { FolderComponent } from 'src/app/components/folder/folder.component';
 import { StorageService } from 'src/app/service/storage.service';
 import { Folder } from 'src/app/model/folder.model';
+import { FolderOptionsComponent } from 'src/app/components/folder-options/folder-options.component';
 
 @Component({
   selector: 'app-home',
@@ -27,7 +28,8 @@ export class HomePage implements OnInit {
 
   constructor(
     private storageService: StorageService, 
-    private loadingCtrl: LoadingController) {
+    private loadingCtrl: LoadingController,
+    private modalCtrl: ModalController) {
     this.folders = [];
    }
 
@@ -53,6 +55,15 @@ export class HomePage implements OnInit {
     console.log(this.folders);
     
     await this.modal.dismiss();
+  }
+
+  async showOptions() {
+    const modal = await this.modalCtrl.create({
+      component: FolderOptionsComponent,
+      initialBreakpoint: 0.15,
+      cssClass: ['show-folder-actions']
+    });
+    modal.present();
   }
 
 }
