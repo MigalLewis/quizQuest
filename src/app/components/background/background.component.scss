@@ -1,0 +1,17 @@
+.background-images {
+    position: unset;
+    z-index: -1;
+}
+
+.bottom-image {
+    position: absolute;
+    bottom: 0;
+    z-index: -1;
+}
+
+.center-image {
+    position: absolute;
+    bottom: 20%;
+    right: 0;
+    z-index: -1;
+}
