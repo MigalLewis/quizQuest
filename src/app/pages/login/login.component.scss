@@ -1,0 +1,85 @@
+.body {
+    position: relative;
+    top: 30px;
+}
+
+ion-text {
+    font-family: 'Play';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+    color: #E8F9FD;
+}
+
+.social-media-icons {
+    margin-top: 45px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.social-media-icon {
+    background: #E8F9FD;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 3px;
+    width: 98px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+ion-icon {
+    font-size: 48px;
+    color: var(--ion-color-primary);
+}
+
+.form {
+    margin-top: 45px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hr-line {
+    border-bottom: solid 1px #E8F9FD;
+    position: relative;
+    bottom: 12px;
+    flex: .4;
+}
+
+.input-item {
+    margin-top: 45px;
+    font-size: 18px;
+    font-family: 'Oxygen';
+}
+
+.label {
+    font-family: 'Oxygen';
+    font-style: normal;
+    font-weight: 700;
+    line-height: 23px;
+    color: #E8F9FD;
+}
+
+ion-input {
+    --background: transparent;
+    border-bottom: solid 1px #E8F9FD;
+    --color: #E8F9FD;
+
+}
+
+.register-prompt {
+    display: block;
+    text-align: center;
+    margin-top: 1em;
+
+    em {
+        text-decoration: underline;
+    }
+}
+
+.sign-in-btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
