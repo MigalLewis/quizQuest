@@ -1,0 +1,58 @@
+.input-item {
+    margin-top: 30px;
+    font-size: 18px;
+    font-family: 'Oxygen';
+}
+
+.label {
+    font-family: 'Oxygen';
+    font-style: normal;
+    font-weight: 700;
+    line-height: 23px;
+    color: #E8F9FD;
+}
+
+ion-input {
+    --background: transparent;
+    border-bottom: solid 1px #E8F9FD;
+    --color: #E8F9FD;
+    --padding-top: unset;
+    text-align: center;
+}
+
+.date {
+    display: flex;
+
+    ion-input:not(:last-child) {
+        margin-right: 1rem;
+    }
+}
+
+.profile-pic {
+    display: flex;
+    justify-content: center;
+
+    svg {
+        margin-top: 30px;
+    }
+
+    .image {
+        border-radius: 50%;
+        overflow: auto;
+        width: 165px;
+        height: 165px;
+
+        ion-img {
+            display: block;
+            width: inherit;
+            height: inherit;
+            object-fit: cover;
+        }
+    }
+}
+
+.next-btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
