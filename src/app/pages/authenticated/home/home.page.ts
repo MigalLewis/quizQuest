@@ -39,7 +39,6 @@ export class HomePage implements OnInit {
     });
     loading.present();
 
-    await this.storageService.init();
     this.folders = await this.storageService.getFolders();
     this.loadingCtrl.dismiss();
   }
