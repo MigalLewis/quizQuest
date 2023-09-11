@@ -4,8 +4,7 @@ import { StorageService } from './storage.service';
 import { importProvidersFrom } from '@angular/core';
 
 import { IonicStorageModule } from '@ionic/storage-angular';
-import { Drivers } from '@ionic/storage';
-import CordovaSQLiteDriver from 'localforage-cordovasqlitedriver';
+
 describe('StorageService', () => {
   let service: StorageService;
 
@@ -13,8 +12,6 @@ describe('StorageService', () => {
     TestBed.configureTestingModule({
       providers: [
         importProvidersFrom(IonicStorageModule.forRoot({
-          name: '__localdb',
-         driverOrder: [CordovaSQLiteDriver._driver, Drivers.IndexedDB, Drivers.LocalStorage]
         })),
       ],
     });

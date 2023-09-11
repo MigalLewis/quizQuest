@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Folder } from '../model/folder.model';
-import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
+import { Filesystem, Directory } from '@capacitor/filesystem';
 import { Preferences } from '@capacitor/preferences';
 
 const FOLDERS_KEY = 'folders';
