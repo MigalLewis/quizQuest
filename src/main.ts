@@ -4,7 +4,6 @@ import { RouteReuseStrategy, provideRouter } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { Drivers } from '@ionic/storage';
-import CordovaSQLiteDriver from 'localforage-cordovasqlitedriver';
 
 import { routes } from './app/app.routes';
 import { AppComponent } from './app/app.component';
@@ -43,10 +42,6 @@ bootstrapApplication(AppComponent, {
         return storage
       })
     ),
-    importProvidersFrom(IonicStorageModule.forRoot({
-      name: '__localdb',
-     driverOrder: [CordovaSQLiteDriver._driver, Drivers.IndexedDB, Drivers.LocalStorage]
-    })),
     provideRouter(routes),
   ],
 });
