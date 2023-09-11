@@ -1,0 +1,61 @@
+<ion-content [fullscreen]="true">
+  <app-background></app-background>
+  <div class="content">
+    <ion-row class="header-text-container">
+      <ion-text class="header-text">
+        Please enter the following details.
+      </ion-text>
+    </ion-row>
+
+    <form>
+      <ion-input [label]="'Name: '"></ion-input>
+      <ion-input [label]="'Surname: *'"></ion-input>
+
+      <!-- date of birth -->
+      <div class="input-item">
+        <span class="label"> Date of birth: * </span>
+        <div class="date" (click)="setOpen(true)">
+          <ion-input [type]="'number'"
+            [value]="dateOfBirth ?  dateOfBirth.getDate() : null"></ion-input>
+          <ion-input [type]="'text'"
+            [value]="dateOfBirth ? months[dateOfBirth.getMonth()] : null"></ion-input>
+          <ion-input [type]="'number'"
+            [value]="dateOfBirth ? dateOfBirth.getFullYear() : null"></ion-input>
+        </div>
+
+        <ion-modal id="pick-date" [isOpen]="isModalOpen" (didDismiss)="isModalOpen = false">
+          <ng-template>
+            <ion-datetime [presentation]="'date'" [showDefaultButtons]="true"
+              [max]="today"></ion-datetime>
+          </ng-template>
+        </ion-modal>
+      </div>
+
+      <!-- profile image -->
+      <div class="input-item">
+        <span class="label">Profile image: *</span>
+        <div class="profile-pic" (click)="selectImage()">
+          <div class="image">
+            <ion-img [src]="" alt=""></ion-img>
+          </div>
+          <ng-template #placeholder>
+            <svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="80" cy="80" r="80" fill="#79DAE8" />
+              <path
+                d="M90.6666 88H69.3333C63.4423 88 58.6666 92.7757 58.6666 98.6667V104H80H101.333V98.6667C101.333 92.7757 96.5576 88 90.6666 88Z"
+                stroke="#E8F9FD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              <path
+                d="M79.9999 77.3333C85.8909 77.3333 90.6666 72.5577 90.6666 66.6667C90.6666 60.7756 85.8909 56 79.9999 56C74.1089 56 69.3333 60.7756 69.3333 66.6667C69.3333 72.5577 74.1089 77.3333 79.9999 77.3333Z"
+                stroke="#E8F9FD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </ng-template>
+
+        </div>
+      </div>
+
+      <ion-row class="next-btn">
+        <ion-button (click)="nextScreen()" class="btn actions-btn">Sign up</ion-button>
+      </ion-row>
+    </form>
+  </div>
+</ion-content>
