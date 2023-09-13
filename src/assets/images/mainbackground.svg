@@ -1,10 +1,10 @@
-<svg width="587" height="768" viewBox="0 0 587 768" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M0 0H462C640.337 110.735 614.194 253.935 462 630C383.011 719.312 346.268 738.105 284 758L0 768V0Z" fill="#6EAFDF"/>
-<path d="M0 68.0463C57.7498 43.1768 93.561 44.8061 162 68.0463C344.063 148.555 296.559 290.592 224 536.046C185.904 604.352 160.331 616.193 112 620.046H0V68.0463Z" fill="#123753"/>
-<path d="M0 234.891C61.2762 212.134 82.3044 238.14 108 318.891C123.847 380.221 100.683 391.777 46 402.891H0V234.891Z" fill="#FF7F00"/>
-<rect y="266" width="344" height="13" fill="#6EAFDF" fill-opacity="0.64"/>
-<rect y="302" width="344" height="13" fill="#6EAFDF" fill-opacity="0.64"/>
-<rect width="344" height="5" transform="matrix(1 0 0 -1 0 397)" fill="#6EAFDF" fill-opacity="0.64"/>
-<rect y="335" width="344" height="31" fill="#6EAFDF" fill-opacity="0.64"/>
-<rect y="423" width="344" height="55" fill="#6EAFDF" fill-opacity="0.64"/>
+<svg width="352" height="463" viewBox="0 0 352 463" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M-8 26C129.328 -8.64802 191.481 -8.68386 275.754 26C385.286 94.0116 369.229 181.963 275.754 412.937C227.24 467.791 204.673 479.333 166.429 491.552L-8 497.694V26Z" fill="#6EAFDF"/>
+<path d="M-8 67.793C27.469 52.5185 49.4638 53.5192 91.498 67.793C203.318 117.241 174.142 204.477 129.577 355.232C106.18 397.184 90.4726 404.457 60.7887 406.823H-8V67.793Z" fill="#123753" fill-opacity="0.66"/>
+<path d="M-8 170.266C29.6349 156.29 42.5501 172.262 58.332 221.858C68.065 259.526 53.8378 266.623 20.2525 273.45H-8V170.266Z" fill="#6EAFDF" fill-opacity="0.82"/>
+<rect x="-8" y="189.373" width="211.28" height="7.98441" fill="#6EAFDF" fill-opacity="0.64"/>
+<rect x="-8" y="211.484" width="211.28" height="7.98441" fill="#6EAFDF" fill-opacity="0.64"/>
+<rect width="211.28" height="3.07093" transform="matrix(1 0 0 -1 -8 269.832)" fill="#6EAFDF" fill-opacity="0.64"/>
+<rect x="-8" y="231.752" width="211.28" height="19.0397" fill="#6EAFDF" fill-opacity="0.64"/>
+<rect x="-8" y="285.8" width="211.28" height="33.7802" fill="#6EAFDF" fill-opacity="0.64"/>
 </svg>

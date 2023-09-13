@@ -1,5 +1,9 @@
 <ion-content [fullscreen]="true">
-  <app-background></app-background>
+  
+  <div class="overlay">
+    <app-background></app-background>
+  </div>
+
   <div class="content">
     <ion-row class="header-text-container">
       <ion-text class="header-text">
@@ -54,7 +58,7 @@
         </span>
 
         <ion-row class="sign-in-btn">
-          <ion-button (click)="loginEmailAndPassword()" [disabled]="!formGroup.valid" class="btn actions-btn">
+          <ion-button (click)="loginEmailAndPassword()" class="btn actions-btn">
             Sign In
           </ion-button>
         </ion-row>
