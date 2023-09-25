@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
+import { PhotoService } from 'src/app/service/photo.service';
 
 @Component({
   selector: 'app-folder-options',
@@ -11,8 +12,14 @@ import { IonicModule } from '@ionic/angular';
 })
 export class FolderOptionsComponent  implements OnInit {
 
-  constructor() { }
+  constructor(private photoService: PhotoService) {
+  }
 
   ngOnInit() {}
+
+  takePhoto() {
+    this.photoService.takePhoto();
+    
+  }
 
 }
