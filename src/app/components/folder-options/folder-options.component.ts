@@ -15,11 +15,14 @@ export class FolderOptionsComponent  implements OnInit {
   constructor(private photoService: PhotoService) {
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.photoService.loadSaved()
+      .then(() => console.log(this.photoService.photos)
+      )
+  }
 
   takePhoto() {
     this.photoService.takePhoto();
-    
   }
 
 }
