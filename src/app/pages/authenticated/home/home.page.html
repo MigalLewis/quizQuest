@@ -14,7 +14,7 @@
   </ion-row>
 
   <div class="created-folders">
-    <app-folder *ngFor="let folder of folders" [folder]="folder" (click)="showOptions()"></app-folder>
+    <app-folder *ngFor="let folder of folders" [folder]="folder" (click)="showOptions(folder.id)"></app-folder>
   </div>
 
   <ion-modal id="create-folder-modal" #modal trigger="open-custom-dialog">

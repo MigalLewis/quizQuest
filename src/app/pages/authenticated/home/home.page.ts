@@ -41,6 +41,7 @@ export class HomePage implements OnInit {
 
     this.folders = await this.storageService.getFolders();
     this.loadingCtrl.dismiss();
+    console.log(this.folders);
   }
 
   async createFolder(foldername: string) {
@@ -51,16 +52,18 @@ export class HomePage implements OnInit {
       modifiedDate: Date.now()
     });
     this.folders = await this.storageService.getFolders();
-    console.log(this.folders);
     
     await this.modal.dismiss();
   }
 
-  async showOptions() {
+  async showOptions(folderId: string) {
     const modal = await this.modalCtrl.create({
       component: FolderOptionsComponent,
       initialBreakpoint: 0.15,
-      cssClass: ['show-folder-actions']
+      cssClass: ['show-folder-actions'],
+      componentProps: {
+        folderId: folderId
+      }
     });
     modal.present();
   }

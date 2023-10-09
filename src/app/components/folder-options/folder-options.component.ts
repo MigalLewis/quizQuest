@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { PhotoService } from 'src/app/service/photo.service';
 
@@ -11,8 +11,10 @@ import { PhotoService } from 'src/app/service/photo.service';
   imports: [CommonModule, IonicModule]
 })
 export class FolderOptionsComponent  implements OnInit {
+  @Input() folderId: string;
 
   constructor(private photoService: PhotoService) {
+    this.folderId = ''
   }
 
   ngOnInit() {
@@ -22,7 +24,7 @@ export class FolderOptionsComponent  implements OnInit {
   }
 
   takePhoto() {
-    this.photoService.takePhoto();
+    this.photoService.takePhoto(this.folderId);
   }
 
 }

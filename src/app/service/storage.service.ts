@@ -27,7 +27,7 @@ export class StorageService {
       }
   
       await Filesystem.mkdir({
-        path: `${FOLDERS_PATH}/${newFolder.name}`,
+        path: `${FOLDERS_PATH}/${newFolder.id}`,
         directory: DOCUMENTS_DIRECTORY,
         recursive: true
       });
