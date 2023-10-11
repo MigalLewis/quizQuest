@@ -14,6 +14,7 @@ import { provideAuth, getAuth, connectAuthEmulator } from '@angular/fire/auth';
 import { provideStorage, getStorage, connectStorageEmulator } from '@angular/fire/storage';
 import { connectFirestoreEmulator, getFirestore, provideFirestore } from '@angular/fire/firestore';
 
+import { defineCustomElements } from '@ionic/pwa-elements/loader';
 
 if (environment.production) {
   enableProdMode();
@@ -45,3 +46,5 @@ bootstrapApplication(AppComponent, {
     provideRouter(routes),
   ],
 });
+
+defineCustomElements(window);
