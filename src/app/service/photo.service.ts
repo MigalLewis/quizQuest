@@ -56,8 +56,10 @@ export class PhotoService {
      * Display the new image by rewriting the 'file://' path to HTTP
      */
     return {
+      id: 'IMG_' + Date.now(),
       filepath: savedFile.uri,
       webviewPath: Capacitor.convertFileSrc(savedFile.uri),
+      folderId: folderId
     };
   }
 
@@ -73,11 +75,17 @@ export class PhotoService {
     
   }
 
-  public async loadSaved() { // must load by folder_id
+  public async loadSaved(folderId: string) {
     /**
      * Retrieve cached photo array data
      */
     const { value } = await Preferences.get({ key: PHOTO_STORAGE });
-    this.photos = (value ? JSON.parse(value) : []) as CustomPhoto[];
+    let photos = (value ? JSON.parse(value) : []) as CustomPhoto[];
+
+    if (photos.length > 0) {
+      photos = photos.filter(photo => photo.folderId === folderId);
+    }
+
+    return photos;
   }
 }
