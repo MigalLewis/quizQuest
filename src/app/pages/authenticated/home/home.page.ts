@@ -34,6 +34,7 @@ export class HomePage implements OnInit {
    }
 
   async ngOnInit() {
+    
     const loading = await this.loadingCtrl.create({
       message: 'Loading your folders ...'
     });
@@ -41,7 +42,6 @@ export class HomePage implements OnInit {
 
     this.folders = await this.storageService.getFolders();
     this.loadingCtrl.dismiss();
-    console.log(this.folders);
   }
 
   async createFolder(foldername: string) {

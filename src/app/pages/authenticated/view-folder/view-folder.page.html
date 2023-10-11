@@ -1,0 +1,16 @@
+<ion-content [fullscreen]="true">
+
+  <div class="folder">
+    <h4> {{ folderId }}</h4>
+
+    <ul>
+      <li *ngFor="let photo of photos">
+        {{ photo.id }}
+        <div class="actions">
+          <ion-icon name="eye-outline" (click)="openPhoto(photo.id)"></ion-icon>
+          <ion-icon name="trash-outline" color="danger"></ion-icon>
+        </div>
+      </li>
+    </ul>
+  </div>
+</ion-content>
