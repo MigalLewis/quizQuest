@@ -8,7 +8,7 @@
         {{ photo.id }}
         <div class="actions">
           <ion-icon name="eye-outline" (click)="openPhoto(photo.id)"></ion-icon>
-          <ion-icon name="trash-outline" color="danger"></ion-icon>
+          <ion-icon name="trash-outline" color="danger" (click)="deletePhoto(photo.id)"></ion-icon>
         </div>
       </li>
     </ul>

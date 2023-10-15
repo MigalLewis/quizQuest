@@ -49,7 +49,8 @@ private async savePicture(photo: Photo, folderId: string) {
   const savedFile = await Filesystem.writeFile({
     path: `${FOLDERS_PATH}/${folderId}/${fileName}`,
     data: base64Data,
-    directory: DOCUMENTS_DIRECTORY
+    directory: DOCUMENTS_DIRECTORY,
+    recursive: true
   });
 
   if (this.platform.is('hybrid')) {
@@ -104,8 +105,7 @@ private async savePicture(photo: Photo, folderId: string) {
   
     if (!this.platform.is('hybrid')) {
       // Display the photo by reading into base64 format
-      for (let photo of this.photos) {
-        console.log(`${FOLDERS_PATH}/${folderId}/${photo.filepath}`);
+      for (let photo of photos) {
         
         // Read each saved photo's data from the Filesystem
         const readFile = await Filesystem.readFile({
@@ -133,4 +133,27 @@ private async savePicture(photo: Photo, folderId: string) {
     };
     reader.readAsDataURL(blob);
   });
+
+  async loadPhoto(folderId: string, photoId: string) {
+    return (await this.loadSaved(folderId)).find(photo => photo.id === photoId);
+  }
+
+  async deletePhoto(folderId: string, photoId: string) {
+    const { value } = await Preferences.get({ key: PHOTO_STORAGE });
+    let photos = (value ? JSON.parse(value) : []) as CustomPhoto[];
+
+    const photo = await this.loadPhoto(folderId, photoId);
+
+    photos = photos.filter(photo => photo.id !== photoId);
+    Preferences.set({
+      key: PHOTO_STORAGE,
+      value: JSON.stringify(photos),
+    });
+    
+    return await Filesystem.deleteFile({
+      path: `${FOLDERS_PATH}/${folderId}/${photo?.filepath}`,
+      directory: DOCUMENTS_DIRECTORY
+  });
+
+  }
 }

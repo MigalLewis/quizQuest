@@ -34,4 +34,12 @@ export class ViewFolderPage implements OnInit {
     this.router.navigate(['authenticated', 'view', 'folder', this.folderId, id])
   }
 
+  deletePhoto(id: string) {
+    this.photoService.deletePhoto(this.folderId, id)
+    .then(() => {
+      this.photoService.loadSaved(this.folderId)
+      .then(photos => this.photos = photos)
+    });
+  }
+
 }
