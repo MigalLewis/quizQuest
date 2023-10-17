@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { PhotoService } from 'src/app/service/photo.service';
 
@@ -10,21 +11,21 @@ import { PhotoService } from 'src/app/service/photo.service';
   standalone: true,
   imports: [CommonModule, IonicModule]
 })
-export class FolderOptionsComponent  implements OnInit {
+export class FolderOptionsComponent {
   @Input() folderId: string;
 
-  constructor(private photoService: PhotoService) {
+  constructor(
+    private photoService: PhotoService,
+    private router: Router) {
     this.folderId = ''
-  }
-
-  ngOnInit() {
-    this.photoService.loadSaved()
-      .then(() => console.log(this.photoService.photos)
-      )
   }
 
   takePhoto() {
     this.photoService.takePhoto(this.folderId);
+  }
+
+  loadFolder() {
+    this.router.navigate(['authenticated', 'view', 'folder', this.folderId])
   }
 
 }
