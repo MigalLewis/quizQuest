@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
+import { Camera, CameraResultType, CameraSource, GalleryPhoto, Photo } from '@capacitor/camera';
 import { Filesystem, Directory } from '@capacitor/filesystem';
 import { Preferences } from '@capacitor/preferences';
 import { Platform } from '@ionic/angular';
@@ -38,7 +38,23 @@ export class PhotoService {
     
   }
 
-private async savePicture(photo: Photo, folderId: string) {
+  async uploadPhotos(folderId: string) {
+    const { photos } = await Camera.pickImages({
+      quality: 100
+    }); 
+
+    for (const photo of photos) {
+      const savedImageFile = await this.savePicture(photo, folderId);
+      this.photos.unshift(savedImageFile);
+    }
+    
+    Preferences.set({
+      key: PHOTO_STORAGE,
+      value: JSON.stringify(this.photos),
+    });
+  }
+
+private async savePicture(photo: Photo | GalleryPhoto, folderId: string) {
   /** 
      * Convert photo to base64 format, required by Filesystem API to save 
      */
@@ -77,7 +93,7 @@ private async savePicture(photo: Photo, folderId: string) {
   }
 }
 
-  private async readAsBase64(photo: Photo) {
+  private async readAsBase64(photo: Photo| GalleryPhoto) {
     // "hybrid" will detect Cordova or Capacitor
     if (this.platform.is('hybrid')) {
       // Read the file into base64 format

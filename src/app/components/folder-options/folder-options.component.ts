@@ -31,4 +31,9 @@ export class FolderOptionsComponent {
     this.modalController.dismiss(null, 'load_folder');
   }
 
+  uploadPhotos() {
+    this.photoService.uploadPhotos(this.folderId);
+    this.modalController.dismiss(null, 'upload_photos');
+  }
+
 }
