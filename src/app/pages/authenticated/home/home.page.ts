@@ -7,6 +7,7 @@ import { FolderComponent } from 'src/app/components/folder/folder.component';
 import { StorageService } from 'src/app/service/storage.service';
 import { Folder } from 'src/app/model/folder.model';
 import { FolderOptionsComponent } from 'src/app/components/folder-options/folder-options.component';
+import { NotificationService } from 'src/app/service/notification.service';
 
 @Component({
   selector: 'app-home',
@@ -29,7 +30,8 @@ export class HomePage implements OnInit {
   constructor(
     private storageService: StorageService, 
     private loadingCtrl: LoadingController,
-    private modalCtrl: ModalController) {
+    private modalCtrl: ModalController,
+    private notificationService: NotificationService) {
     this.folders = [];
    }
 
@@ -54,6 +56,7 @@ export class HomePage implements OnInit {
     this.folders = await this.storageService.getFolders();
     
     await this.modal.dismiss();
+    this.notificationService.presentToast('top', 'Folder ' + foldername + ' has been created successfully created!');
   }
 
   async showOptions(folderId: string) {

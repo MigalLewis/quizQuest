@@ -26,6 +26,8 @@
 @import "@ionic/angular/css/flex-utils.css";
 
 /* Global stylying */
+@import './theme/variables.scss';
+
 ion-content {
     --padding-start: 1.5rem;
     --padding-end: 1.5rem;
@@ -100,5 +102,15 @@ ion-modal.show-folder-actions .wrapper {
 }
 
 ion-button {
-   --background: #123753;
+    --background: #123753;
+}
+
+.toast-class {
+    --color: $white-color;
+    text-align: center;
+    font-family: $lato-font;
+    font-size: .8rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
 }

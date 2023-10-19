@@ -167,7 +167,7 @@ private async savePicture(photo: Photo | GalleryPhoto, folderId: string) {
     });
     
     return await Filesystem.deleteFile({
-      path: `${FOLDERS_PATH}/${folderId}/${photo?.filepath}`,
+      path: this.platform.is('hybrid') ? (photo!.filepath).replace(/.*\/filevisor/, "filevisor") : `${FOLDERS_PATH}/${folderId}/${photo?.filepath}`,
       directory: DOCUMENTS_DIRECTORY
   });
 

@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { PhotoService } from 'src/app/service/photo.service';
 import { CustomPhoto } from 'src/app/model/photo.model';
 import { Router } from '@angular/router';
+import { NotificationService } from 'src/app/service/notification.service';
 
 @Component({
   selector: 'app-view-folder',
@@ -20,7 +21,7 @@ export class ViewFolderPage implements OnInit {
   private photoService = inject(PhotoService);
   private router = inject(Router);
 
-  constructor() {
+  constructor(private notificationService: NotificationService) {
     
   }
 
@@ -37,8 +38,9 @@ export class ViewFolderPage implements OnInit {
   deletePhoto(id: string) {
     this.photoService.deletePhoto(this.folderId, id)
     .then(() => {
+      this.notificationService.presentToast('top', 'Deleted image ' + id + ' successfully!')
       this.photoService.loadSaved(this.folderId)
-      .then(photos => this.photos = photos)
+      .then(photos => this.photos = photos);
     });
   }
 
