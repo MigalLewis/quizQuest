@@ -9,7 +9,11 @@ import { RouterModule } from '@angular/router';
   templateUrl: './authenticated.page.html',
   styleUrls: ['./authenticated.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule, RouterModule]
+  imports: [
+    IonicModule, 
+    CommonModule, 
+    FormsModule, 
+    RouterModule]
 })
 export class AuthenticatedPage implements OnInit {
 
@@ -19,8 +23,8 @@ export class AuthenticatedPage implements OnInit {
     this.menuOptions = [
       { option: 'Profile', url: ''},
       { option: 'Settings', url: '' },
-      { option: 'Help', url: ''},
-      { option: 'About', url: 'about'}
+      { option: 'Help', url: 'help'},
+      { option: 'About', url: 'about'},
     ];
   }
 
