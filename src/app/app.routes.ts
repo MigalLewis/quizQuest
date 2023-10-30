@@ -53,23 +53,24 @@ export const routes: Routes = [
         component: HelpPage
       },
       {
-        path: 'help/guided-videos',
-        component: GuidedVideosPage
-      }, 
-      {
         path: 'help/hacked',
         component: HackedPage
       },
       {
-        path: 'help/data-privacy',
-        component: DataPrivacyPage
-      }, 
+        path: 'help/data/privacy',
+        component:DataPrivacyPage
+      },
       {
-        path: 'help/report-issue',
-        component: ReportIssuePage
-      }
-    ],
-
+        path: 'help/guided/videos',
+        component: GuidedVideosPage
+      },
+      {
+        path: 'help/report/issue',
+        component:ReportIssuePage
+      },
+    ]
   },
  
+
+
 ];

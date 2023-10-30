@@ -1,0 +1,402 @@
+@import '../../../../../theme/variables.scss';
+
+.HelpDataPrivacy{
+    width: 26.75rem;
+    height: 151rem;
+    background: linear-gradient(180deg, #123753 1.62%, #295374 23.96%, #407096 51.08%, #578FBA 77.6%, #6EAFDF 100%);
+    position: relative;
+}
+.Frame{
+    width: 26.75rem;
+    height: 137rem;
+    flex-shrink: 0;
+    top: 14rem;
+    position: absolute;
+}
+.Data{
+    width: 23.25rem;
+    height: 1.875rem;
+    left: 1.75rem;
+    top: 11.25rem;
+    flex-shrink: 0;
+    color: #FFF;
+    font-family: Lato;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    position: absolute;
+    word-wrap: break-word;
+}
+.Protecting{
+    width: 23.25rem;
+    left: 1.75rem;
+    top: 1.5rem;
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position: absolute;
+    word-wrap: break-word;
+}
+.WeWant{
+    width: 23.25rem;
+    left: 1.75rem;
+    top: 13.125rem;
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position: absolute;
+    word-wrap: break-word;
+}
+.WeTake{
+    width: 23.25rem;
+    left: 1.75rem;
+    top: 44.5625rem;
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position: absolute;
+    word-wrap: break-word;
+}
+.WeProvide{
+    width: 23.25rem;
+    left: 1.625rem;
+    top: 65.9375rem;
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position: absolute;
+    word-wrap: break-word;
+}
+.DataTypes{
+    width: 23.25rem;
+    left: 1.625rem;
+    top: 30.0625rem;
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position: absolute;
+    word-wrap: break-word;
+}
+.ThirdParties{
+    width: 23.25rem;
+    left: 1.75rem;
+    top: 35.6875rem;
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position: absolute;
+    word-wrap: break-word;
+}
+.DataSecurity{
+    width: 23.25rem;
+    height: 1.875rem;
+    left: 1.625rem;
+    top: 42.6875rem;
+    flex-shrink: 0;
+    color: #FFF;
+    font-family: Lato;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    position: absolute;
+    word-wrap: break-word;
+}
+.Encryption{
+    width: 23.25rem;
+    height: 4.25rem;
+    left: 1.75rem;
+    top: 48.8125rem;
+    flex-shrink: 0;
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position: absolute;
+    word-wrap: break-word;
+}
+.PrivacySettings{
+    width: 23.25rem;
+    height: 2rem;
+    left: 1.625rem;
+    top: 64.4375rem;
+    flex-shrink: 0;
+    color: #FFF;
+    font-family: Lato;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    position: absolute;
+    word-wrap: break-word;
+}
+.Group15{
+    width: 23.25rem;
+    height: 14rem;
+    left: 1.625rem;
+    top: 71.5625rem;
+    flex-shrink: 0;
+    position: absolute;
+}
+.AccountSettings{
+    width: 23.25rem;
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position: absolute;
+    word-wrap: break-word;
+}
+.Folder{
+    width: 23.25rem;
+    top: 5.625rem;
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position: absolute;
+    word-wrap: break-word;
+}
+.DataDeletion{
+    width: 23.25rem;
+    top: 9.875rem;
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position: absolute;
+    word-wrap: break-word;
+}
+.Cookies{
+    width: 23.25rem;
+    height: 5.4375rem;
+    left: 1.5rem;
+    top: 92.75rem;
+    flex-shrink: 0;
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position: absolute;
+    word-wrap: break-word;
+}
+.ThirdParty{
+    width: 23.25rem;
+    height: 5.4375rem;
+    left: 1.5rem;
+    top: 99.6875rem;
+    flex-shrink: 0;
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position: absolute;
+    word-wrap: break-word;
+}
+.Group14{
+    width: 23.25rem;
+    height: 8.375rem;
+    left: 1.625rem;
+    top: 54.5625rem;
+    flex-shrink: 0;
+    position: absolute;
+}
+.Access{
+    width: 23.25rem;
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position: absolute;
+    word-wrap: break-word;
+}
+.Regular{
+    width: 23.25rem;
+    top: 4.25rem;
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position: absolute;
+    word-wrap: break-word;
+}
+.Purpose{
+    width: 23.25rem;
+    left: 1.625rem;
+    top: 18.75rem;
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position: absolute;
+    word-wrap: break-word;
+}
+.Consent{
+    width: 23.25rem;
+    height: 2.8125rem;
+    left: 1.625rem;
+    top: 25.75rem;    
+    flex-shrink: 0;
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position: absolute;
+    word-wrap: break-word;
+}
+.WeAreCommitted{
+    width: 23.25rem;
+    left: 1.5rem;
+    top: 127.125rem;
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position: absolute;
+    word-wrap: break-word;
+}
+.WeUseCookies{
+    width: 23.25rem;
+    left: 1.625rem;
+    top: 87.125rem;
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position: absolute;
+    word-wrap: break-word;
+}
+.CookiesAndTracking{
+    width: 23.25rem;
+    height: 1.875rem;
+    top: 85.25rem;
+    left: 1.5rem;
+    flex-shrink: 0;
+    color: #FFF;
+    font-family: Lato;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    position: absolute;
+    word-wrap: break-word;
+}
+.ForMore{
+    width: 23.25rem;
+    left: 1.625rem;
+    top: 108.5rem;
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position: absolute;
+    word-wrap: break-word;
+}
+.PrivacyPolicy{
+    width: 23.25rem;
+    height: 1.875rem;
+    left: 1.5rem;
+    top: 106.625rem;
+    flex-shrink: 0;
+    color: #FFF;
+    font-family: Lato;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    position: absolute;
+    word-wrap: break-word;
+}
+.Questions{
+    width: 23.25rem;
+    left: 1.5625rem;
+    top: 120.125rem;
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position: absolute;
+    word-wrap: break-word;
+}
+.ContactUs{
+    width: 23.25rem;
+    height: 1.875rem;
+    left: 1.4375rem;
+    top: 118.25rem;
+    flex-shrink: 0;
+    color: #FFF;
+    font-family: Lato;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    position: absolute;
+    word-wrap: break-word;
+}
+.DataAndPrivacy{
+    width: 23.4375rem;
+    left: 1.75rem;
+    top: 10.6875rem;
+    color: #FFF;
+    font-family: Lato;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    position: absolute;
+    word-wrap: break-word;
+}
+.Line21{
+    width: 26.75119rem;
+    height: 0.0625rem;
+    top: 14rem;
+    position: absolute;
+    border: 1px #E8F9FD solid;
+}

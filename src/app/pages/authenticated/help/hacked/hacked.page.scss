@@ -1,0 +1,190 @@
+@import '../../../../../theme/variables.scss';
+
+.HelpHacked{
+    width: 26.75rem;
+    height: 131.875rem; 
+    position: relative; 
+    background: linear-gradient(180deg, #123753 2%, #295374 24%, #407096 51%, #578FBA 78%, #6EAFDF 100%)
+}
+.Frame{
+    display: flex;
+    top: 14rem;
+    padding-top: 1.5rem; 
+    padding-bottom: 1.875rem; 
+    padding-left: 1.75rem; 
+    padding-right: 1.75rem;
+    justify-content: flex-start;
+    height: 116.875rem;
+    width: 26.75rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+    display: inline-flex;
+    position: absolute;
+}
+.Line21{
+    width: 26.75119rem;
+    height: 0.0625rem;
+    top: 14rem;
+    background: #E8F9FD;
+    position: absolute;
+}
+.IThink{
+    width: 23.4375rem;
+    left: 1.75rem;
+    top: 10.6875rem;
+    color: #FFF;
+    font-family: Lato;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    position: absolute;
+    word-wrap: break-word;
+}
+.Suspect{
+    width: 23.25rem;
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    word-wrap: break-word;
+}
+.Step{
+    width: 23.25rem;
+    height: 1.875rem;
+    color: #FFF;
+    font-family: Lato;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    word-wrap: break-word;
+}
+.Step4{
+    width: 23.25rem;
+    height: 3.375rem;
+    color: #FFF;
+    font-family: Lato;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    word-wrap: break-word;
+}
+.Step6{
+    width: 23.25rem;
+    height: 4rem;
+    color: #FFF;
+    font-family: Lato;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    word-wrap: break-word;
+}
+.Change{
+    width: 23.25rem;
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.TwoFactor{
+    width: 23.25rem;
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    word-wrap: break-word;
+}
+.Check{
+    width: 23.25rem;
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    word-wrap: break-word;
+}
+.LogOut{
+    width: 23.25rem;
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    word-wrap: break-word;
+}
+.Antivirus{
+    width: 23.25rem;
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    word-wrap: break-word;
+}
+.Contact{
+    width: 23.25rem;
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    word-wrap: break-word;
+}
+.Evidence{
+    width: 23.25rem;
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    word-wrap: break-word;
+}
+.Regular{
+    width: 23.25rem;
+    height: 4.25rem;
+    flex-shrink: 0;
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    word-wrap: break-word;
+}
+.Beware{
+    width: 23.25rem;
+    height: 7rem;
+    flex-shrink: 0;
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    word-wrap: break-word;
+}
+.Para{
+    width: 23.25rem;
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    word-wrap: break-word;
+}
