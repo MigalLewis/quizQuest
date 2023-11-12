@@ -60,7 +60,6 @@ export class HomePage implements OnInit {
       this.notificationService.presentToast('top', 'Folder ' + foldername + ' has been created successfully created!');
     } catch (error) {
       this.notificationService.presentToast('top', 'Folder ' + foldername + ' already exists!');
-      this.modal.dismiss();
     }
   }
 
