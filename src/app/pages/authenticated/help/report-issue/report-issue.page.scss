@@ -1,0 +1,44 @@
+@import '../../../../../theme/variables.scss';
+
+.HelpReportIssue{
+    width: 26.75rem;
+    height: 57.875rem;
+    background: linear-gradient(180deg, #123753 1.62%, #295374 23.96%, #407096 51.08%, #578FBA 77.6%, #6EAFDF 100%);
+}
+.ReportAnIssue{
+    width: 18.1875rem;
+    left: 1.75rem;
+    top: 10.6875rem;
+    color: #FFF;
+    font-family: Lato;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    position: absolute;
+    word-wrap: break-word;
+}
+.Line21{
+    width: 26.75119rem;
+    height: 0.0625rem;
+    top: 14rem;
+    background: #E8F9FD;
+    position: absolute;
+}
+.Input{
+    width: 23.25rem;
+    height: 3.4375rem;
+    flex-shrink: 0;
+    position: absolute;
+}
+.Name{
+    width: 23.25rem;
+    color: #FFF;
+    font-family: Lato;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    position: absolute;
+    word-wrap: break-word;
+}

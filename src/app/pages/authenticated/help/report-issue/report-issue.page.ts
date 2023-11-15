@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 
+
 @Component({
   selector: 'app-report-issue',
   templateUrl: './report-issue.page.html',
