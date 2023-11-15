@@ -4,14 +4,12 @@
     height: 100%;
 }
 
-.mainbackground{
+.filebackground {
     position: absolute;
-}
-
-.filebackground{
-    position: absolute;
-    height: 18rem;
-    width: 28rem;
+    height: auto;
+    width: 15rem;
+    bottom: 1.5rem;
+    left: 2.5rem;
 }
 
 .orbContainer {
@@ -19,15 +17,18 @@
     z-index: -1;
     height: 100%;
     width: 100%;
-    top: 50%;
-    left: -6;
+
+    .mainbackground {
+        position: absolute;
+        width: 15rem;
+        height: 20rem;
+        bottom: 0;
+    }
 }
 
 .fileContainer {
-    position: absolute;                                                               
+    position: absolute;
     z-index: -1;
     height: 100%;
     width: 100%;
-    top: 60%;
-    right: 4%;
 }

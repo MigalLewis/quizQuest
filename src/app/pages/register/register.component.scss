@@ -1,33 +1,50 @@
+@import '../../../theme/variables.scss';
+
+.content {
+    margin-top: 3rem;
+}
+
 ion-content {
-    overflow: hidden;
+    position: relative;
+}
+
+.header-text {
+    color: #E8F9FD;
+    font-family: $montserrat-font;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 
 .input-item {
-    margin-top: 30px;
-    font-size: 18px;
-    font-family: 'Oxygen';
+    margin-top: 1rem;
 }
 
 .label {
-    font-family: 'Oxygen';
+    color: #E8F9FD;
+    font-family: $lato-font;
+    font-size: 1rem;
     font-style: normal;
     font-weight: 700;
-    line-height: 23px;
-    color: #E8F9FD;
+    line-height: normal;
 }
 
-ion-input {
-    --background: transparent;
+input {
+    display: block;
+    background: transparent;
+    border: none;
     border-bottom: solid 1px #E8F9FD;
-    --color: #E8F9FD;
-    --padding-top: unset;
-    text-align: center;
+    color: #FFF;
+    font-family: $lato-font;
+    width: 100%;
+    margin-top: .825rem;
 }
 
 .date {
     display: flex;
 
-    ion-input:not(:last-child) {
+    input:not(:last-child) {
         margin-right: 1rem;
     }
 }
@@ -37,14 +54,15 @@ ion-input {
     justify-content: center;
 
     svg {
-        margin-top: 30px;
+        width: 7.5rem;
+        height: 7.5rem;
     }
 
     .image {
         border-radius: 50%;
         overflow: auto;
-        width: 165px;
-        height: 165px;
+        width: 7.5rem;
+        height: 7.5rem;
 
         ion-img {
             display: block;
@@ -58,5 +76,6 @@ ion-input {
 .next-btn {
     display: flex;
     justify-content: center;
-    margin-top: 30px;
+    margin-top: 1.2rem;
+    height: 30px;
 }
