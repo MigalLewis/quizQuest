@@ -1,23 +1,28 @@
-.body {
-    position: relative;
-    top: 30px;
-}
+@import '../../../../theme/variables.scss';
 
 ion-content {
     overflow: hidden;
 }
 
 ion-text {
-    font-family: 'Play';
+    color: #E8F9FD;
+    font-family: $montserrat-font;
+    font-size: 1.125rem;
     font-style: normal;
     font-weight: 400;
-    font-size: 24px;
-    line-height: 28px;
-    color: #E8F9FD;
+    line-height: normal;
+}
+
+.header-text {
+
+    margin-top: 5rem;
+}
+
+.body {
+    margin-top: 1.5rem;
 }
 
 .social-media-icons {
-    margin-top: 45px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -26,8 +31,8 @@ ion-text {
     background: #E8F9FD;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 3px;
-    width: 98px;
-    height: 60px;
+    width: 7rem;
+    height: 3rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -39,7 +44,7 @@ ion-icon {
 }
 
 .form {
-    margin-top: 45px;
+    margin-top: 3rem;
     margin-left: auto;
     margin-right: auto;
 }
@@ -52,38 +57,43 @@ ion-icon {
 }
 
 .input-item {
-    margin-top: 45px;
-    font-size: 18px;
-    font-family: 'Oxygen';
+    margin-top: 1rem;
 }
 
 .label {
-    font-family: 'Oxygen';
+    color: #E8F9FD;
+    font-family: $lato-font;
+    font-size: 1rem;
     font-style: normal;
     font-weight: 700;
-    line-height: 23px;
-    color: #E8F9FD;
+    line-height: normal;
 }
 
-ion-input {
-    --background: transparent;
+input {
+    display: block;
+    background: transparent;
+    border: none;
     border-bottom: solid 1px #E8F9FD;
-    --color: #E8F9FD;
-
+    color: #FFF;
+    font-family: $lato-font;
+    width: 100%;
+    margin-top: .825rem;
 }
 
 .register-prompt {
     display: block;
+    color: #FFF;
     text-align: center;
-    margin-top: 1em;
-
-    em {
-        text-decoration: underline;
-    }
+    font-family: Montserrat;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-decoration-line: underline;
 }
 
 .sign-in-btn {
     display: flex;
     justify-content: center;
-    margin-top: 30px;
+    margin-top: 2.5rem;
 }

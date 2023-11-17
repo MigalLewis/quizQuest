@@ -1,5 +1,5 @@
 <ion-content [fullscreen]="true">
-  
+
   <div class="overlay">
     <app-background></app-background>
   </div>
@@ -8,10 +8,10 @@
     <ion-row class="header-text-container">
       <ion-text class="header-text">
         Sign in with
-      </ion-text> 
+      </ion-text>
     </ion-row>
     <div class="body">
-      
+
       <ion-row class="social-media-icons">
         <ion-col class="social-media-icon">
           <svg (click)="signInWithGoogle()" width="48" height="48" viewBox="0 0 48 48" fill="none"
@@ -48,20 +48,24 @@
         </ion-row>
 
 
-        <ion-input type="email" [label]="'Username: '"></ion-input>
-        <ion-input [label]="'Password: * '" [type]="'password'"></ion-input>
-        <span class="label register-prompt">
-          Don't have an account?
-          <em (click)="onRegister()">
-            Register
-          </em>
-        </span>
+        <div class="input-item">
+          <label class="label">Username*</label>
+          <input type="email">
+        </div>
+        <div class="input-item">
+          <label class="label">Password*</label>
+          <input type="password">
+        </div>
 
         <ion-row class="sign-in-btn">
           <ion-button (click)="loginEmailAndPassword()" class="btn actions-btn">
             Sign In
           </ion-button>
         </ion-row>
+        <span class="label register-prompt" (click)="onRegister()">
+          or Register
+        </span>
+
       </div>
 
     </div>
