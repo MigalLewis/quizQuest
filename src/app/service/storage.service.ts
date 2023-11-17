@@ -17,10 +17,6 @@ export class StorageService {
   async addFolder(newFolder: Folder): Promise<void> {
     try {
       const folders: Folder[] = await this.getFolders() || [];
-
-      if ((await Filesystem.checkPermissions()).publicStorage !== 'granted')
-        if ((await Filesystem.requestPermissions()).publicStorage !== 'granted')
-        return;
   
       if (folders.some(folder => folder.id === newFolder.id)) {
         throw new Error('This folder already exists!');
@@ -39,9 +35,7 @@ export class StorageService {
       });
       
     } catch (error) {
-      console.error('Error adding folder:', error);
-      // or, rethrow the error for the component to handle
-      throw error;
+      return Promise.reject(error)
     }
   }
 

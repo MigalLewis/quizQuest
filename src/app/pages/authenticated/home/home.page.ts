@@ -47,16 +47,20 @@ export class HomePage implements OnInit {
   }
 
   async createFolder(foldername: string) {
-    await this.storageService.addFolder({
-      id: foldername.replace(' ', '_').toLowerCase(),
-      name: foldername, 
-      dateCreated: Date.now(),
-      modifiedDate: Date.now()
-    });
-    this.folders = await this.storageService.getFolders();
-    
-    await this.modal.dismiss();
-    this.notificationService.presentToast('top', 'Folder ' + foldername + ' has been created successfully created!');
+    try {
+      await this.storageService.addFolder({
+        id: foldername.replace(' ', '_').toLowerCase(),
+        name: foldername, 
+        dateCreated: Date.now(),
+        modifiedDate: Date.now()
+      });
+      this.folders = await this.storageService.getFolders();
+      
+      await this.modal.dismiss();
+      this.notificationService.presentToast('top', 'Folder ' + foldername + ' has been created successfully created!');
+    } catch (error) {
+      this.notificationService.presentToast('top', 'Folder ' + foldername + ' already exists!');
+    }
   }
 
   async showOptions(folderId: string) {
