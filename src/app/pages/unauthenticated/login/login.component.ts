@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular'
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { BackgroundComponent } from "../../components/background/background.component";
+import { BackgroundComponent } from "../../../components/background/background.component";
 
 @Component({
     selector: 'app-login',
