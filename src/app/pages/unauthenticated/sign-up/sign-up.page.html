@@ -12,7 +12,7 @@
     <div class="body">
 
       <ion-row class="social-media-icons">
-        <ion-col class="social-media-icon">
+        <ion-col class="social-media-icon" (click)="googleAuth()">
           <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M45.12 24.5C45.12 22.94 44.98 21.44 44.72 20H24V28.51H35.84C35.33 31.26 33.78 33.59 31.45 35.15V40.67H38.56C42.72 36.84 45.12 31.2 45.12 24.5V24.5Z"
@@ -28,7 +28,7 @@
               fill="#EA4335" />
           </svg>
         </ion-col>
-        <ion-col class="social-media-icon ion-margin-horizontal">
+        <ion-col class="social-media-icon ion-margin-horizontal" (click)="facebookAuth()">
           <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M48 24C48 10.7452 37.2548 7.62939e-06 24 7.62939e-06C10.7452 7.62939e-06 0 10.7452 0 24C0 35.9791 8.77645 45.908 20.25 47.7085V30.9375H14.1563V24H20.25V18.7125C20.25 12.6975 23.833 9.37501 29.3152 9.37501C31.941 9.37501 34.6875 9.84376 34.6875 9.84376V15.75H31.6612C28.6798 15.75 27.75 17.6 27.75 19.498V24H34.4062L33.3422 30.9375H27.75V47.7085C39.2235 45.908 48 35.9791 48 24Z"
@@ -37,7 +37,7 @@
         </ion-col>
       </ion-row>
 
-      <div class="form">
+      <div class="form" [formGroup]="formGroup">
         <ion-row class="ion-justify-content-evenly">
           <div class="hr-line"></div>
           <ion-text class="ion-margin-horizontal">OR</ion-text>
@@ -47,15 +47,19 @@
 
         <div class="input-item">
           <label class="label">Email*</label>
-          <input type="email">
+          <input [formControlName]="'email'" type="email">
         </div>
         <div class="input-item">
           <label class="label">Password*</label>
-          <input type="password">
+          <input [formControlName]="'password'" type="password">
+        </div>
+        <div class="input-item">
+          <label class="label">Confirm password*</label>
+          <input [formControlName]="'confirmPassword'" type="password">
         </div>
 
         <ion-row class="sign-in-btn">
-          <ion-button class="btn actions-btn">
+          <ion-button class="btn actions-btn" (click)="emailAndPasswordRegistration()" [disabled]="formGroup.invalid">
             Next
           </ion-button>
         </ion-row>

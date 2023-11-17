@@ -8,28 +8,30 @@
       Please enter the following details.
     </ion-text>
 
-    <form>
+    <form [formGroup]="formGroup">
       <div class="input-item">
         <span class="label"> Name: * </span>
-        <input>
+        <input [formControlName]="'name'">
       </div>
       <div class="input-item">
         <span class="label"> Surname: * </span>
-        <input>
+        <input [formControlName]="'surname'">
       </div>
 
       <!-- date of birth -->
       <div class="input-item">
         <span class="label"> Date of birth: * </span>
-        <div class="date" (click)="setOpen(true)">
-          <input [type]="'number'" [value]="dateOfBirth ?  dateOfBirth.getDate() : null">
-          <input [type]="'text'" [value]="dateOfBirth ? months[dateOfBirth.getMonth()] : null">
-          <input [type]="'number'" [value]="dateOfBirth ? dateOfBirth.getFullYear() : null">
+        <div [formGroupName]="'dateOfBirth'" class="date" (click)="setOpen(true)">
+          <input [formControlName]="'day'" [type]="'number'" [value]="dateOfBirth ?  dateOfBirth.getDate() : null">
+          <input [formControlName]="'month'" [type]="'text'"
+            [value]="dateOfBirth ? months[dateOfBirth.getMonth()] : 'null'">
+          <input [formControlName]="'year'" [type]="'number'" [value]="dateOfBirth ? dateOfBirth.getFullYear() : null">
         </div>
 
         <ion-modal id="pick-date" [isOpen]="isModalOpen" (didDismiss)="isModalOpen = false">
           <ng-template>
-            <ion-datetime [presentation]="'date'" [showDefaultButtons]="true" [max]="today"></ion-datetime>
+            <ion-datetime (ionChange)="setDateOfBirth($event)" [presentation]="'date'" [showDefaultButtons]="true"
+              [max]="today"></ion-datetime>
           </ng-template>
         </ion-modal>
       </div>
@@ -57,7 +59,7 @@
       </div>
 
       <ion-row class="next-btn">
-        <ion-button (click)="nextScreen()" class="btn actions-btn">Sign up</ion-button>
+        <ion-button [disabled]="formGroup.invalid" (click)="saveUser()" class="btn actions-btn">Sign up</ion-button>
       </ion-row>
     </form>
   </div>
