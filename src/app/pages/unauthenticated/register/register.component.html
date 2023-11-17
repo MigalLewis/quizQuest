@@ -29,7 +29,8 @@
 
         <ion-modal id="pick-date" [isOpen]="isModalOpen" (didDismiss)="isModalOpen = false">
           <ng-template>
-            <ion-datetime [presentation]="'date'" [showDefaultButtons]="true" [max]="today"></ion-datetime>
+            <ion-datetime (ionChange)="setDateOfBirth($event)" [presentation]="'date'" [showDefaultButtons]="true"
+              [max]="today"></ion-datetime>
           </ng-template>
         </ion-modal>
       </div>

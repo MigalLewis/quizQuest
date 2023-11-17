@@ -21,20 +21,7 @@ export class RegisterComponent implements OnInit {
   constructor() {
     this.isModalOpen = false;
     this.today = new Date().toISOString();
-    this.months = [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "June",
-      "July",
-      "Aug",
-      "Sept",
-      "Oct",
-      "Nov",
-      "Dec"
-    ];
+    this.months = [ "Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec" ];
   }
 
   ngOnInit() {}
@@ -43,7 +30,9 @@ export class RegisterComponent implements OnInit {
 
   selectImage() {}
 
-  setOpen(isOpen: boolean) {}
+  setOpen(isOpen: boolean) {
+    this.isModalOpen = isOpen;
+  }
 
   setDateOfBirth(date: any) {
     this.dateOfBirth = new Date(date.detail.value);
