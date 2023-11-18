@@ -40,7 +40,7 @@
         </ion-col>
       </ion-row>
 
-      <div class="form">
+      <div class="form" [formGroup]="formGroup">
         <ion-row class="ion-justify-content-evenly">
           <div class="hr-line"></div>
           <ion-text class="ion-margin-horizontal">OR</ion-text>
@@ -50,15 +50,15 @@
 
         <div class="input-item">
           <label class="label">Username*</label>
-          <input type="email">
+          <input type="email" [formControlName]="'email'">
         </div>
         <div class="input-item">
           <label class="label">Password*</label>
-          <input type="password">
+          <input type="password" [formControlName]="'password'">
         </div>
 
         <ion-row class="sign-in-btn">
-          <ion-button (click)="loginEmailAndPassword()" class="btn actions-btn">
+          <ion-button [disabled]="formGroup.invalid" (click)="loginEmailAndPassword()" class="btn actions-btn">
             Sign In
           </ion-button>
         </ion-row>

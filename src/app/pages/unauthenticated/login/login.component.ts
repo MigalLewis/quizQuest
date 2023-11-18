@@ -1,31 +1,46 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular'
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { BackgroundComponent } from "../../../components/background/background.component";
+import { AuthService } from 'src/app/service/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss'],
     standalone: true,
-    imports: [IonicModule, CommonModule, BackgroundComponent]
+    imports: [IonicModule, CommonModule, BackgroundComponent, ReactiveFormsModule]
 })
 export class LoginComponent  implements OnInit {
  formGroup!: FormGroup;
-  constructor() { 
+  constructor(
+    private authService: AuthService,
+    private router: Router) { 
       this.formGroup = this.createForm();
   }
 
   ngOnInit() {}
 
-  signInWithGoogle(){}
+  signInWithGoogle(){
+    this.authService.googleAuth();
+  }
 
-  signInWithFacebook(){}
+  signInWithFacebook(){
+    this.authService.facebookAuth();
+  }
 
-  onRegister() {}
+  onRegister() {
+    this.router.navigate(['sign', 'up']);
+  }
 
-  loginEmailAndPassword(){}
+  loginEmailAndPassword(){
+    
+    this.authService.emailAndPasswordAuth(
+      this.formGroup.get('email')?.value, 
+      this.formGroup.get('password')?.value)
+  }
 
   private createForm() {
     return new FormGroup({
