@@ -28,7 +28,7 @@ export class SignUpPage {
         [Validators.required, Validators.email]
       ],
       password: ['',
-        [ Validators.required, Validators.min(6)]
+        [ Validators.required, Validators.minLength(6)]
       ],
       confirmPassword: ['', 
         [Validators.required, Validators.min(6)]
@@ -50,5 +50,17 @@ export class SignUpPage {
 
     this.authService.emailAndPasswordRegistration(email, password);
     
+  }
+
+  get emailControl() {
+    return this.formGroup.get('email');
+  }
+
+  get passwordControl() {
+    return this.formGroup.get('password');
+  }
+
+  get confirmPasswordControl() {
+    return this.formGroup.get('confirmPassword');
   }
 }
