@@ -65,7 +65,8 @@
         <div class="input-item">
           <label class="label">Confirm password*</label>
           <input [formControlName]="'confirmPassword'" type="password">
-          <p class="error-text">Passwords must match</p>
+          <p *ngIf="confirmPasswordControl?.touched && confirmPasswordControl?.errors?.['passwordMismatch']"
+            class="error-text">Passwords must match</p>
         </div>
 
         <ion-row class="sign-in-btn">
