@@ -24,7 +24,7 @@ export class FolderOptionsComponent {
   }
 
   takePhoto() {
-    this.photoService.takePhoto(this.folderId)
+    this.photoService.savePictureToFolder(this.folderId)
     .then(() => {
       this.modalController.dismiss(null, 'take_photo');
       this.notificationService.presentToast('top', 'Saved image to ' + this.folderId + ' successfully!')
