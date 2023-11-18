@@ -5,6 +5,8 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angula
 import { RouterModule } from "@angular/router";
 import { BackgroundComponent } from "../../../components/background/background.component";
 import { FirestoreService, UserDetail } from "src/app/service/firestore.service";
+import { PhotoService } from "src/app/service/photo.service";
+import { Photo } from "@capacitor/camera";
 
 @Component({
     selector: "app-register",
@@ -19,8 +21,11 @@ export class RegisterComponent implements OnInit {
   today: string;
   months: string[];
   formGroup: FormGroup;
+  photo?: Photo;
 
-  constructor(private firestoreService: FirestoreService) {
+  constructor(
+    private firestoreService: FirestoreService,
+    private photoService: PhotoService) {
     this.isModalOpen = false;
     this.today = new Date().toISOString();
     this.months = [ "Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec" ];
@@ -29,7 +34,10 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {}
 
-  selectImage() {}
+  selectImage() {
+    this.photoService.takePhoto()
+      .then(photo => this.photo = photo);
+  }
 
   setOpen(isOpen: boolean) {
     this.isModalOpen = isOpen;
