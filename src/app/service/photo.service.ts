@@ -21,21 +21,22 @@ export class PhotoService {
     this.platform = platform;
   }
 
-  public async takePhoto(folderId: string) {
-    const capturedPhoto = await Camera.getPhoto({
+  public takePhoto() {
+    return Camera.getPhoto({
       resultType: CameraResultType.Uri,
       source: CameraSource.Camera,
       quality: 100
     });
+  }
 
-    const savedImageFile = await this.savePicture(capturedPhoto, folderId);
+  public async savePictureToFolder(folderId: string) {
+    const savedImageFile = await this.savePicture(await this.takePhoto(), folderId);
     this.photos.unshift(savedImageFile);
 
     Preferences.set({
       key: PHOTO_STORAGE,
       value: JSON.stringify(this.photos),
     });
-    
   }
 
   async uploadPhotos(folderId: string) {

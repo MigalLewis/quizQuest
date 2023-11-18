@@ -40,8 +40,8 @@
       <div class="input-item">
         <span class="label">Profile image: *</span>
         <div class="profile-pic" (click)="selectImage()">
-          <div class="image" *ngIf="false; else placeholder">
-            <ion-img [src]="" alt=""></ion-img>
+          <div class="image" *ngIf="photo; else placeholder">
+            <ion-img [src]="photo.webPath" alt=""></ion-img>
           </div>
           <ng-template #placeholder>
             <svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
