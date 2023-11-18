@@ -7,6 +7,7 @@ import { BackgroundComponent } from "../../../components/background/background.c
 import { FirestoreService, UserDetail } from "src/app/service/firestore.service";
 import { PhotoService } from "src/app/service/photo.service";
 import { Photo } from "@capacitor/camera";
+import { FireStorageService } from "src/app/service/fire-storage.service";
 
 @Component({
     selector: "app-register",
@@ -25,7 +26,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private firestoreService: FirestoreService,
-    private photoService: PhotoService) {
+    private photoService: PhotoService,
+    private fireStorageService: FireStorageService) {
     this.isModalOpen = false;
     this.today = new Date().toISOString();
     this.months = [ "Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec" ];
@@ -69,12 +71,11 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  saveUser() {
-    this.firestoreService.saveUser({
-      name: this.formGroup.get('name')?.value,
-      surname: this.formGroup.get('surname')?.value,
-      dateOfBirth: this.formGroup.get('dateOfBirth')?.value
-      } as UserDetail);
-    
+  async saveUser() {
+    if(this.photo) {
+      const imageUrl = await this.fireStorageService.saveProfilePhoto(this.photo);
+      this.formGroup.get('profilePhoto')!.setValue(imageUrl);
+    }
+    this.firestoreService.saveUser(this.formGroup.value);
   }
 }
