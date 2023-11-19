@@ -47,15 +47,26 @@
 
         <div class="input-item">
           <label class="label">Email*</label>
-          <input [formControlName]="'email'" type="email">
+          <input [ngClass]="emailControl?.invalid && emailControl?.dirty && emailControl?.touched ? 'error-border' : ''"
+            [formControlName]="'email'" type="email">
+          <p *ngIf="emailControl?.touched && emailControl?.errors?.['email']" class="error-text">Enter valid email</p>
+          <p *ngIf="emailControl?.touched && emailControl?.errors?.['required']" class="error-text">Email is required
+          </p>
         </div>
         <div class="input-item">
           <label class="label">Password*</label>
           <input [formControlName]="'password'" type="password">
+          <p *ngIf="passwordControl?.touched && passwordControl?.errors?.['required']" class="error-text">Password is
+            required</p>
+          <p *ngIf="passwordControl?.touched && passwordControl?.errors?.['minlength']" class="error-text">Password must
+            have
+            a minimum of 6 characters</p>
         </div>
         <div class="input-item">
           <label class="label">Confirm password*</label>
           <input [formControlName]="'confirmPassword'" type="password">
+          <p *ngIf="confirmPasswordControl?.touched && confirmPasswordControl?.errors?.['passwordMismatch']"
+            class="error-text">Passwords must match</p>
         </div>
 
         <ion-row class="sign-in-btn">
