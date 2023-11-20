@@ -32,6 +32,24 @@ ion-menu::part(container) {
     padding-right: 1.5rem;
     margin-top: 2rem;
 
+    .image {
+        width: 8rem;
+        height: 8rem;
+        border-radius: 50%;
+        overflow: hidden;
+
+        ion-img {
+            width: auto;
+            height: 100%;
+        }
+
+        ion-img::part(image) {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
     ion-icon {
         display: block;
         font-size: 8rem;
@@ -78,5 +96,25 @@ hr {
                 text-decoration: none;
             }
         }
+    }
+}
+
+.header-avatar {
+    .image {
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+
+    ion-img {
+        width: auto;
+        height: 100%;
+    }
+
+    ion-img::part(image) {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 }
