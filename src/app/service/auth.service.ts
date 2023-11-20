@@ -58,6 +58,18 @@ export class AuthService {
             this.router.navigate(['register'])
           } 
         });
+      }).catch(error => {
+        if ( error.code === 'auth/email-already-in-use') {
+          this.alertService.presentToast(
+            'middle', 
+            'The email you provided is already in use!',
+            'toast-class-error');
+        } else if ( error.code === 'auth/weak-password') {
+          this.alertService.presentToast(
+            'middle', 
+            'Please enter a password with at least 6 characters!',
+            'toast-class-error');
+        }
       })
   }
 
