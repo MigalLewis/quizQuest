@@ -1,15 +1,23 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AuthenticatedPage } from './authenticated.page';
 import { provideRouter } from '@angular/router';
+import { AuthService } from 'src/app/service/auth.service';
+import { FirestoreService } from 'src/app/service/firestore.service';
 
 describe('AuthenticatedPage', () => {
   let component: AuthenticatedPage;
   let fixture: ComponentFixture<AuthenticatedPage>;
 
   beforeEach(async () => {
+    const authSpy = jasmine.createSpyObj('AuthService', ['']);
+    const firestoreSpy = jasmine.createSpyObj('AuthService', ['']);
     await TestBed.configureTestingModule({
       imports: [AuthenticatedPage],
-      providers: [provideRouter([])],
+      providers: [
+        provideRouter([]),
+        { provide: AuthService, useValue: authSpy},
+        { provide: FirestoreService, useValue: firestoreSpy}
+      ],
     }).compileComponents();
   });
 
