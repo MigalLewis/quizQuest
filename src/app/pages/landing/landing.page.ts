@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { BackgroundComponent } from 'src/app/components/background/background.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-landing',
@@ -11,10 +12,22 @@ import { BackgroundComponent } from 'src/app/components/background/background.co
   imports: [IonicModule, CommonModule, BackgroundComponent]
 })
 export class LandingPage implements OnInit {
+  timeleft = 2;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.redirect();
+  }
+
+  private redirect() {
+    let downloadTimer = setInterval(() => {
+      if(this.timeleft === 1){
+        clearInterval(downloadTimer);
+        this.router.navigate(['']);
+      }
+      this.timeleft -= 1;
+    }, 1000);
   }
 
 }

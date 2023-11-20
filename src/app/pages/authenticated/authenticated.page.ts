@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
+import { FirestoreService, UserDetail } from 'src/app/service/firestore.service';
+import { AuthService } from 'src/app/service/auth.service';
+import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-authenticated',
@@ -16,10 +19,13 @@ import { RouterModule } from '@angular/router';
     RouterModule]
 })
 export class AuthenticatedPage implements OnInit {
+  user!: UserDetail | any;
 
   menuOptions: { option: string, url: string }[];
 
-  constructor() {
+  constructor(
+    private firestoreService: FirestoreService,
+    private authService: AuthService) {
     this.menuOptions = [
       { option: 'Profile', url: ''},
       { option: 'Settings', url: '' },
@@ -29,7 +35,10 @@ export class AuthenticatedPage implements OnInit {
   }
 
   ngOnInit(): void {
-      
+    this.authService.currentUser
+    .pipe(switchMap(
+      currentUser => this.firestoreService.userInfo(currentUser!.uid)))
+    .subscribe(user => this.user = user);
   }
 
 }
