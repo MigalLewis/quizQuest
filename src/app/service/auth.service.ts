@@ -2,6 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { Auth, FacebookAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, user } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { take } from 'rxjs';
+import { NotificationService } from './notification.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,8 @@ import { take } from 'rxjs';
 export class AuthService {
 
   private auth = inject(Auth);
-  private router = inject(Router)
+  private router = inject(Router);
+  private alertService = inject(NotificationService)
 
   googleAuth() {
     signInWithPopup(this.auth, new GoogleAuthProvider)
@@ -40,6 +42,11 @@ export class AuthService {
           if (user)
             this.router.navigate(['authenticated', 'home']);
         })
+      }).catch(() => {
+        this.alertService.presentToast(
+          'middle', 
+          'Please enter valid login details!',
+          'toast-class-error');
       })
   }
 
@@ -51,6 +58,18 @@ export class AuthService {
             this.router.navigate(['register'])
           } 
         });
+      }).catch(error => {
+        if ( error.code === 'auth/email-already-in-use') {
+          this.alertService.presentToast(
+            'middle', 
+            'The email you provided is already in use!',
+            'toast-class-error');
+        } else if ( error.code === 'auth/weak-password') {
+          this.alertService.presentToast(
+            'middle', 
+            'Please enter a password with at least 6 characters!',
+            'toast-class-error');
+        }
       })
   }
 

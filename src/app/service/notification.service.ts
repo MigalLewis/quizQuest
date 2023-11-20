@@ -8,12 +8,15 @@ export class NotificationService {
 
   constructor(private toastController: ToastController) { }
 
-  public presentToast(position: 'top' | 'middle' | 'bottom', message: string) {
+  public presentToast(
+    position: 'top' | 'middle' | 'bottom', 
+    message: string,
+    cssClass: string | string[] = 'toast-class') {
     this.toastController.create({
       message: message,
       duration: 1500,
       position: position,
-      cssClass: 'toast-class',
+      cssClass: cssClass,
       translucent: true
     }).then(toast => toast.present());
   }
