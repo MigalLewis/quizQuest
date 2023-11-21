@@ -26,27 +26,20 @@
     background: #E8F9FD;
     position: absolute;
 }
-.HelpItem1{
-    width: 22.625rem;
-    top: 15.625rem;
-    left: 1.75rem;
-    position: absolute;
-}
 .Vector{
     width: 0.3125rem;
     height: 0.625rem;
-    left: 22.3125rem;
-    top: 1.4375rem;
     position: absolute;
+    .Vector1{
+        left: 22.3125rem;
+        top: 1.4375rem;
+    }
+    .Vector2{
+        left: 22.1875rem;
+        top: 0.625rem;
+    }
 }
-.Vector1{
-    width: 0.3125rem;
-    height: 0.625rem;
-    left: 22.1875rem;
-    top: 0.625rem;
-    position: absolute;
-}
-.Change{
+.Term{
     width: 18.1875rem;
     color: #E8F9FD;
     font-family: Montserrat;
@@ -56,6 +49,13 @@
     line-height: normal;
     position: absolute;
     word-wrap: break-word;
+
+}
+.HelpItem1{
+    width: 22.625rem;
+    top: 15.625rem;
+    left: 1.75rem;
+    position: absolute;
 }
 .HelpItem2{
     width: 22.5rem;
@@ -63,48 +63,15 @@
     top: 20.75rem;
     position: absolute;
 }
-.Scan{
-    width: 18.1875rem;
-    color: #E8F9FD;
-    font-family: Montserrat;
-    font-size: 1.5rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
+.HelpItem3{
+    width: 22.5rem;
+    left: 1.625rem;
+    top: 29.1875rem;
     position: absolute;
-    word-wrap: break-word;
-}
-.Upload{
-    width: 18.1875rem;
-    color: #E8F9FD;
-    font-family: Montserrat;
-    font-size: 1.5rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    position: absolute;
-    word-wrap: break-word;
-}
-.Share{
-    width: 18.1875rem;
-    color: #E8F9FD;
-    font-family: Montserrat;
-    font-size: 1.5rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    position: absolute;
-    word-wrap: break-word;
 }
 .HelpItem4{
     width: 22.625rem;
     left: 1.5rem;
     top: 24.0625rem;
-    position: absolute;
-}
-.HelpItem3{
-    width: 22.5rem;
-    left: 1.625rem;
-    top: 29.1875rem;
     position: absolute;
 }
