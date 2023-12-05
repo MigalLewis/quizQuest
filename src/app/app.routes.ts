@@ -11,6 +11,7 @@ import { HackedPage } from './pages/authenticated/help/hacked/hacked.page';
 import { DataPrivacyPage } from './pages/authenticated/help/data-privacy/data-privacy.page';
 import { ReportIssuePage } from './pages/authenticated/help/report-issue/report-issue.page';
 import { RegisterComponent } from './pages/unauthenticated/register/register.component';
+import { AuthGuard } from './guard/auth.guard';
 
 export const routes: Routes = [
   {
@@ -21,6 +22,7 @@ export const routes: Routes = [
   {
     path: 'authenticated',
     component: AuthenticatedPage,
+    canActivateChild: [AuthGuard],
     children: [
       {
         path: 'home',
