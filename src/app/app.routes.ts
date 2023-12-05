@@ -12,6 +12,7 @@ import { DataPrivacyPage } from './pages/authenticated/help/data-privacy/data-pr
 import { ReportIssuePage } from './pages/authenticated/help/report-issue/report-issue.page';
 import { RegisterComponent } from './pages/unauthenticated/register/register.component';
 import { AuthGuard } from './guard/auth.guard';
+import { UnauthenticatedGuard } from './guard/unauthenticated.guard';
 
 export const routes: Routes = [
   {
@@ -81,6 +82,7 @@ export const routes: Routes = [
   },
    {
     path: 'login',
-    loadComponent: () => import('./pages/unauthenticated/login/login.component').then(m => m.LoginComponent)
+    loadComponent: () => import('./pages/unauthenticated/login/login.component').then(m => m.LoginComponent),
+    canActivate: [UnauthenticatedGuard]
    },
 ];
