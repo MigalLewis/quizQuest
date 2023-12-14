@@ -24,7 +24,7 @@ export class LandingPage implements OnInit {
     let downloadTimer = setInterval(() => {
       if(this.timeleft === 1){
         clearInterval(downloadTimer);
-        this.router.navigate(['']);
+        this.router.navigate(['authenticated', 'home']);
       }
       this.timeleft -= 1;
     }, 1000);
