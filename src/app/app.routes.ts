@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { AuthenticatedPage } from './pages/authenticated/authenticated.page';
 import { HomePage } from './pages/authenticated/home/home.page';
 import { AboutPage } from './pages/authenticated/about/about.page';
+import { LoginComponent } from './pages/unauthenticated/login/login.component';
 import { ViewFolderPage } from './pages/authenticated/view-folder/view-folder.page';
 import { ViewPhotoPage } from './pages/authenticated/view-photo/view-photo.page';
 import { HelpPage } from './pages/authenticated/help/help.page';
@@ -9,17 +10,21 @@ import { GuidedVideosPage } from './pages/authenticated/help/guided-videos/guide
 import { HackedPage } from './pages/authenticated/help/hacked/hacked.page';
 import { DataPrivacyPage } from './pages/authenticated/help/data-privacy/data-privacy.page';
 import { ReportIssuePage } from './pages/authenticated/help/report-issue/report-issue.page';
+import { RegisterComponent } from './pages/unauthenticated/register/register.component';
+import { AuthGuard } from './guard/auth.guard';
+import { UnauthenticatedGuard } from './guard/unauthenticated.guard';
 import {ProfilePage} from './pages/authenticated/profile/profile.page';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'authenticated/home',
+    redirectTo: 'landing',
     pathMatch: 'full'
   },
   {
     path: 'authenticated',
     component: AuthenticatedPage,
+    canActivateChild: [AuthGuard],
     children: [
       {
         path: 'home',
@@ -82,6 +87,7 @@ export const routes: Routes = [
   },
    {
     path: 'login',
-    loadComponent: () => import('./pages/unauthenticated/login/login.component').then(m => m.LoginComponent)
-   }
+    loadComponent: () => import('./pages/unauthenticated/login/login.component').then(m => m.LoginComponent),
+    canActivate: [UnauthenticatedGuard]
+   },
 ];
