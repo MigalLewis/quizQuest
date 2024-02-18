@@ -45,7 +45,7 @@ export class UserDetailsComponent {
     this.formGroup = this.createForm();
   }
 
-  private   createForm() {
+  private createForm() {
     return new FormGroup({
       name: new FormControl('', Validators.required),
       surname: new FormControl('', Validators.required),
