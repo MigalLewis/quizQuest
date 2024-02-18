@@ -1,12 +1,12 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {BackgroundComponent} from "../background/background.component";
-import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
-import {IonicModule} from "@ionic/angular";
-import {NgIf} from "@angular/common";
-import {Photo} from "@capacitor/camera";
-import {PhotoService} from "../../service/photo.service";
-import {UserDetail} from "../../service/firestore.service";
-import {FireStorageService} from "../../service/fire-storage.service";
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {BackgroundComponent} from '../background/background.component';
+import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
+import {IonicModule} from '@ionic/angular';
+import {NgIf, TitleCasePipe} from '@angular/common';
+import {Photo} from '@capacitor/camera';
+import {PhotoService} from '../../service/photo.service';
+import {UserDetail} from '../../service/firestore.service';
+import {FireStorageService} from '../../service/fire-storage.service';
 
 @Component({
   selector: 'app-user-details',
@@ -17,7 +17,8 @@ import {FireStorageService} from "../../service/fire-storage.service";
     FormsModule,
     IonicModule,
     NgIf,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TitleCasePipe
   ],
   standalone: true
 })
@@ -34,7 +35,7 @@ export class UserDetailsComponent {
   isModalOpen = false;
   dateOfBirth: Date | undefined;
   today = new Date().toISOString();
-  months = [ "Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec" ];
+  months = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec' ];
   formGroup: FormGroup;
   photo?: Photo;
 
