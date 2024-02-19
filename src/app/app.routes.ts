@@ -13,6 +13,7 @@ import { ReportIssuePage } from './pages/authenticated/help/report-issue/report-
 import { RegisterComponent } from './pages/unauthenticated/register/register.component';
 import { AuthGuard } from './guard/auth.guard';
 import { UnauthenticatedGuard } from './guard/unauthenticated.guard';
+import {ProfilePage} from './pages/authenticated/profile/profile.page';
 
 export const routes: Routes = [
   {
@@ -31,7 +32,7 @@ export const routes: Routes = [
       },
       {
         path: 'about',
-        component: AboutPage 
+        component: AboutPage
       },
       {
         path: 'view/folder/:id',
@@ -60,6 +61,10 @@ export const routes: Routes = [
       {
         path: 'help/report/issue',
         component:ReportIssuePage
+      },
+      {
+        path: 'profile',
+        component: ProfilePage
       },
     ]
   },

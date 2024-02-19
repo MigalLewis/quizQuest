@@ -13,9 +13,9 @@ import { switchMap } from 'rxjs';
   styleUrls: ['./authenticated.page.scss'],
   standalone: true,
   imports: [
-    IonicModule, 
-    CommonModule, 
-    FormsModule, 
+    IonicModule,
+    CommonModule,
+    FormsModule,
     RouterModule]
 })
 export class AuthenticatedPage implements OnInit {
@@ -27,7 +27,7 @@ export class AuthenticatedPage implements OnInit {
     private firestoreService: FirestoreService,
     private authService: AuthService) {
     this.menuOptions = [
-      { option: 'Profile', url: ''},
+      { option: 'Profile', url: 'profile'},
       { option: 'Settings', url: '' },
       { option: 'Help', url: 'help'},
       { option: 'About', url: 'about'},
