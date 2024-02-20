@@ -28,7 +28,7 @@ export class UserDetailsComponent {
   @Input()
   saveButtonText = '';
   @Input()
-  user: UserDetail | undefined;
+  user!: UserDetail;
   @Output()
   saveDetails = new EventEmitter<UserDetail>();
 
@@ -82,7 +82,7 @@ export class UserDetailsComponent {
 
   async saveUserDetails() {
     if (this.photo) {
-      const imageUrl = await this.fireStorageService.saveProfilePhoto(this.photo);
+      const imageUrl = await this.fireStorageService.saveProfilePhoto(this.photo, this.user.uid!);
       this.formGroup.get('profilePhoto')!.setValue(imageUrl);
     }
     this.saveDetails.emit(this.formGroup.value)

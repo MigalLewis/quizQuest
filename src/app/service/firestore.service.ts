@@ -1,8 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { Firestore, addDoc, collection, doc, docData, setDoc } from '@angular/fire/firestore';
-import { AuthService } from './auth.service';
-import { Router } from '@angular/router';
-import { take } from 'rxjs';
+import { Firestore, doc, docData, setDoc } from '@angular/fire/firestore';
 
 const USER_COLLECTION = 'users';
 
@@ -12,19 +9,9 @@ const USER_COLLECTION = 'users';
 export class FirestoreService {
 
   private readonly firestore: Firestore = inject(Firestore);
-  private readonly authService: AuthService = inject(AuthService);
-  private router = inject(Router)
-  private uuid!: string;
 
-  constructor() {
-    this.authService.currentUser
-    .pipe(take(1))
-    .subscribe(user => this.uuid = user!.uid);
-  }
-
-  saveUser(details: UserDetail) {
-     setDoc(doc(this.firestore, USER_COLLECTION, this.uuid), details)
-      .then(() => this.router.navigate(['splash']));
+  saveUser(details: UserDetail, uid: string) {
+     setDoc(doc(this.firestore, USER_COLLECTION, uid), details);
   }
 
   userInfo(uuid: string) {
@@ -33,8 +20,9 @@ export class FirestoreService {
 }
 
 export interface UserDetail {
-  name: string;
-  surname: string;
-  dateOfBirth: any;
-  profileImageUrl: string;
+  uid?: string;
+  name?: string;
+  surname?: string;
+  dateOfBirth?: any;
+  profileImageUrl?: string;
 }

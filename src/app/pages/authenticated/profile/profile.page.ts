@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import {BackgroundComponent} from '../../../components/background/background.component';
 import {UserDetailsComponent} from '../../../components/user-details/user-details.component';
 import {FirestoreService, UserDetail} from '../../../service/firestore.service';
+import {AuthService} from '../../../service/auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -12,12 +13,19 @@ import {FirestoreService, UserDetail} from '../../../service/firestore.service';
   standalone: true,
   imports: [IonicModule, CommonModule, BackgroundComponent, UserDetailsComponent]
 })
-export class ProfilePage {
+export class ProfilePage implements OnInit{
+  private user!: UserDetail;
 
-  constructor(private firestoreService: FirestoreService) {
+  constructor(
+    private firestoreService: FirestoreService,
+    private authService: AuthService) {
+  }
+
+  ngOnInit(): void {
+    this.user = this.authService.currentUser;
   }
 
   updateProfile(user: UserDetail) {
-    this.firestoreService.saveUser(user);
+    this.firestoreService.saveUser(user, this.user.uid!);
   }
 }

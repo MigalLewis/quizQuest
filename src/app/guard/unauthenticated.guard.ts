@@ -13,7 +13,7 @@ export class UnauthenticatedGuard implements CanActivate {
   private router: Router = inject(Router)
 
   canActivate() {
-   return this.authService.currentUser.pipe(map(user => {
+   return this.authService.currentUser$.pipe(map(user => {
     if (user) {
       this.router.navigate(['authenticated', 'home'])
       return false
@@ -22,5 +22,5 @@ export class UnauthenticatedGuard implements CanActivate {
     }
    }));
   }
-  
+
 }

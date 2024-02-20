@@ -12,7 +12,7 @@ export class AuthGuard implements CanActivateChild {
   private router: Router = inject(Router)
 
   canActivateChild() {
-   return this.authService.currentUser.pipe(map(user => {
+   return this.authService.currentUser$.pipe(map(user => {
     if (user) {
       return true
     } else {
@@ -21,5 +21,5 @@ export class AuthGuard implements CanActivateChild {
     }
    }));
   }
-  
+
 }
