@@ -13,7 +13,7 @@ export class FireStorageService {
   private uuid!: string;
 
   constructor() {
-    this.authService.currentUser$.subscribe(user => this.uuid = user!.uid);
+    this.authService.currentUserObservable$.subscribe(user => this.uuid = user!.uid);
   }
 
   async uploadPhoto(photo: Photo, uid: string) {

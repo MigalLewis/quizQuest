@@ -5,6 +5,8 @@ import {BackgroundComponent} from '../../../components/background/background.com
 import {UserDetailsComponent} from '../../../components/user-details/user-details.component';
 import {FirestoreService, UserDetail} from '../../../service/firestore.service';
 import {AuthService} from '../../../service/auth.service';
+import {map, Observable, switchMap} from "rxjs";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-profile',
@@ -14,18 +16,20 @@ import {AuthService} from '../../../service/auth.service';
   imports: [IonicModule, CommonModule, BackgroundComponent, UserDetailsComponent]
 })
 export class ProfilePage implements OnInit{
-  private user!: UserDetail;
+  user!: Observable<UserDetail>;
 
   constructor(
     private firestoreService: FirestoreService,
-    private authService: AuthService) {
+    private authService: AuthService,
+    private router: Router) {
   }
 
   ngOnInit(): void {
-    this.user = this.authService.currentUser;
+    this.user = this.authService.savedUserObservable$;
   }
 
   updateProfile(user: UserDetail) {
-    this.firestoreService.saveUser(user, this.user.uid!);
+    this.firestoreService.saveUser(user)
+      .then(() => this.router.navigate(['authenticated', 'home']));
   }
 }

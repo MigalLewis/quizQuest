@@ -1,5 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { Firestore, doc, docData, setDoc } from '@angular/fire/firestore';
+import {Observable} from "rxjs";
 
 const USER_COLLECTION = 'users';
 
@@ -10,19 +11,19 @@ export class FirestoreService {
 
   private readonly firestore: Firestore = inject(Firestore);
 
-  saveUser(details: UserDetail, uid: string) {
-     setDoc(doc(this.firestore, USER_COLLECTION, uid), details);
+  saveUser(user: UserDetail) {
+     return setDoc(doc(this.firestore, USER_COLLECTION, user.uid!), user);
   }
 
   userInfo(uuid: string) {
-    return docData(doc(this.firestore, 'users/' + uuid));
+    return docData(doc(this.firestore, 'users/' + uuid)) as Observable<UserDetail>;
   }
 }
 
 export interface UserDetail {
-  uid?: string;
+  uid: string;
   name?: string;
   surname?: string;
-  dateOfBirth?: any;
+  dateOfBirth?: string;
   profileImageUrl?: string;
 }

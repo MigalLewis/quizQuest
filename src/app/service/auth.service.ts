@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { Auth, FacebookAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, user, User, AuthProvider } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import {BehaviorSubject, of, Subject, switchMap, take} from 'rxjs';
+import {BehaviorSubject, map, of, Subject, switchMap, take} from 'rxjs';
 import { NotificationService } from './notification.service';
 import {FirestoreService, UserDetail} from './firestore.service';
 
@@ -13,14 +13,8 @@ export class AuthService {
   private auth = inject(Auth);
   private router = inject(Router);
   private alertService = inject(NotificationService)
-  private userSubject$ = new BehaviorSubject<UserDetail>({});
+  private currentUser?: UserDetail;
   private firestoreService = inject(FirestoreService)
-
-  constructor() {
-    this.currentUser$.subscribe(currentUser => {
-      this.setUserSubject(currentUser);
-    })
-  }
 
   googleAuth() {
     this.handleGoogleOrFacebookAuth(new GoogleAuthProvider);
@@ -33,7 +27,7 @@ export class AuthService {
   emailAndPasswordAuth(email: string, password: string) {
     signInWithEmailAndPassword(this.auth, email, password)
       .then(() => {
-        this.currentUser$.pipe(take(1)).subscribe(user => {
+        this.currentUserObservable$.pipe(take(1)).subscribe(user => {
           if (user)
             this.router.navigate(['authenticated', 'home']);
         })
@@ -48,7 +42,7 @@ export class AuthService {
   emailAndPasswordRegistration(email: string, password: string) {
     createUserWithEmailAndPassword(this.auth, email, password)
       .then(() => {
-        this.currentUser$.subscribe(user => {
+        this.currentUserObservable$.subscribe(user => {
           if (user) {
             this.router.navigate(['register'])
           }
@@ -68,40 +62,45 @@ export class AuthService {
       })
   }
 
-  get currentUser$() {
+  get currentUserObservable$() { // todo: use savedUserObservable instead
     return user(this.auth);
   }
 
-  get currentUser() {
-    return this.userSubject$.getValue();
+  get savedUserObservable$(){
+    return this.currentUserObservable$.pipe(switchMap(user => {
+      return this.firestoreService.userInfo(user?.uid!)
+    }));
   }
 
-  private setUserSubject(user: User | null) {
+  private setCurrentUser(user: User | null) {
     if (user) {
       const name = user.displayName?.split(' ')[0];
       const surname = user.displayName?.split(' ')[1];
-      this.userSubject$.next({
+      const profileImageUrl= user.photoURL;
+
+      this.currentUser = {
         uid: user.uid,
         name,
-        surname
-      });
+        surname,
+        profileImageUrl: profileImageUrl ? profileImageUrl : ''
+      }
     }
   }
 
   private handleGoogleOrFacebookAuth(provider: AuthProvider) {
     signInWithPopup(this.auth, provider)
       .then(() => {
-        this.currentUser$.pipe(
+        this.currentUserObservable$.pipe(
           switchMap(user => {
             if (!user) return of(null);
-            this.setUserSubject(user);
+            this.setCurrentUser(user);
             return this.firestoreService.userInfo(user?.uid!);
           }),
           take(1)).subscribe(savedUser => {
           if (savedUser) {
             this.router.navigate(['authenticated', 'home']);
           } else {
-            this.firestoreService.saveUser(this.currentUser, this.currentUser.uid!);
+            this.firestoreService.saveUser(this.currentUser!);
             this.router.navigate(['register']);
           }
         });

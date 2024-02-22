@@ -1,11 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import {Router, RouterModule} from '@angular/router';
 import { BackgroundComponent } from '../../../components/background/background.component';
 import { FirestoreService, UserDetail } from 'src/app/service/firestore.service';
 import {UserDetailsComponent} from '../../../components/user-details/user-details.component';
 import {AuthService} from '../../../service/auth.service';
+import {Observable, switchMap} from "rxjs";
 
 @Component({
     selector: 'app-register',
@@ -14,18 +15,21 @@ import {AuthService} from '../../../service/auth.service';
     standalone: true,
     imports: [IonicModule, CommonModule, RouterModule, BackgroundComponent, UserDetailsComponent]
 })
-export class RegisterComponent implements OnInit{
-  user!: UserDetail;
+export class RegisterComponent implements OnInit {
+  user!: Observable<UserDetail>;
+
   constructor(
     private firestoreService: FirestoreService,
-    private authService: AuthService) {
+    private authService: AuthService,
+    private router: Router) {
   }
 
   ngOnInit() {
-    this.user = this.authService.currentUser;
+    this.user = this.authService.savedUserObservable$;
   }
 
   saveUser(user: UserDetail) {
-    this.firestoreService.saveUser(user, this.user.uid!);
+    this.firestoreService.saveUser(user)
+      .then(() => this.router.navigate(['authenticated', 'home']));
   }
 }
