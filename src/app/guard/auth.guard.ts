@@ -1,17 +1,25 @@
 import { Injectable, inject } from '@angular/core';
-import { CanActivateChild, Router } from '@angular/router';
+import {
+  ActivatedRouteSnapshot,
+  CanActivate,
+  CanActivateChild,
+  Router,
+  RouterStateSnapshot,
+  UrlTree
+} from '@angular/router';
 import { AuthService } from '../service/auth.service';
-import { map } from 'rxjs';
+import {map, Observable} from 'rxjs';
+import {user} from "@angular/fire/auth";
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivateChild {
+export class AuthGuard implements CanActivateChild, CanActivate {
 
   private authService: AuthService = inject(AuthService);
   private router: Router = inject(Router)
 
-  canActivateChild() {
+  canActivate() {
    return this.authService.currentUserObservable$.pipe(map(user => {
     if (user) {
       return true
@@ -20,6 +28,10 @@ export class AuthGuard implements CanActivateChild {
       return false;
     }
    }));
+  }
+
+  canActivateChild() {
+    return this.canActivate();
   }
 
 }

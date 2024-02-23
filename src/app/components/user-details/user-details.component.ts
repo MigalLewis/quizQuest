@@ -90,7 +90,8 @@ export class UserDetailsComponent {
       uid: this.uid,
       name: this.formValue.name,
       surname: this.formValue.surname,
-      dateOfBirth: this.dateOfBirth?.toString()
+      dateOfBirth: this.dateOfBirth?.toString(),
+      hasCompletedRegistration: true
     }
 
     if (this.photo) {

@@ -26,4 +26,6 @@ export interface UserDetail {
   surname?: string;
   dateOfBirth?: string;
   profileImageUrl?: string;
+  hasCompletedRegistration?: boolean;
+  email?: string;
 }

@@ -13,7 +13,6 @@ export class AuthService {
   private auth = inject(Auth);
   private router = inject(Router);
   private alertService = inject(NotificationService)
-  private currentUser?: UserDetail;
   private firestoreService = inject(FirestoreService)
 
   googleAuth() {
@@ -27,9 +26,12 @@ export class AuthService {
   emailAndPasswordAuth(email: string, password: string) {
     signInWithEmailAndPassword(this.auth, email, password)
       .then(() => {
-        this.currentUserObservable$.pipe(take(1)).subscribe(user => {
-          if (user)
+        this.savedUserObservable$.pipe(take(1)).subscribe(user => {
+          if (user && user.hasCompletedRegistration) {
             this.router.navigate(['authenticated', 'home']);
+          } else {
+            this.router.navigate(['register']);
+          }
         })
       }).catch(() => {
         this.alertService.presentToast(
@@ -44,6 +46,8 @@ export class AuthService {
       .then(() => {
         this.currentUserObservable$.subscribe(user => {
           if (user) {
+            const userObject = this.constructUserFromAuthUser(user);
+            this.firestoreService.saveUser(userObject);
             this.router.navigate(['register'])
           }
         });
@@ -72,35 +76,32 @@ export class AuthService {
     }));
   }
 
-  private setCurrentUser(user: User | null) {
-    if (user) {
-      const name = user.displayName?.split(' ')[0];
-      const surname = user.displayName?.split(' ')[1];
-      const profileImageUrl= user.photoURL;
-
-      this.currentUser = {
-        uid: user.uid,
-        name,
-        surname,
-        profileImageUrl: profileImageUrl ? profileImageUrl : ''
-      }
+  private constructUserFromAuthUser(user: User): UserDetail {
+    return {
+      uid: user.uid,
+      email: user.email ? user.email : '',
+      name: user.displayName ? user.displayName?.split(' ')[0] : '',
+      surname: user.displayName ? user.displayName?.split(' ')[1] : '',
+      profileImageUrl: user.photoURL ? user.photoURL : '',
+      hasCompletedRegistration: false
     }
   }
 
   private handleGoogleOrFacebookAuth(provider: AuthProvider) {
+    let userObject: UserDetail;
     signInWithPopup(this.auth, provider)
       .then(() => {
         this.currentUserObservable$.pipe(
           switchMap(user => {
             if (!user) return of(null);
-            this.setCurrentUser(user);
+            userObject = this.constructUserFromAuthUser(user)
             return this.firestoreService.userInfo(user?.uid!);
           }),
           take(1)).subscribe(savedUser => {
           if (savedUser) {
             this.router.navigate(['authenticated', 'home']);
           } else {
-            this.firestoreService.saveUser(this.currentUser!);
+            this.firestoreService.saveUser(userObject);
             this.router.navigate(['register']);
           }
         });
