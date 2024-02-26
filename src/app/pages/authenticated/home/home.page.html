@@ -8,14 +8,14 @@
           quest begin!"</ion-text>
       </ion-col>
       <ion-col size="12">
-        <div class="hr-line"></div>
-        <h3>Join Game</h3>
-        <div class="action">
-          <ion-input></ion-input>
-          <ion-button (click)="enterGame()">Go</ion-button>
-        </div>
-      </ion-col>
-      <ion-col size="12">
+        <div class="hr-line margin-bottom-medium"></div>
+        <form [formGroup]="formGroup">
+          <ion-label class="margin-bottom-small">Enter Game Code</ion-label>
+          <ion-input formControlName="gameCode" fill="solid" class="margin-bottom-small"></ion-input>
+          <ion-button (click)="onJoin()" color="secondary">
+            Join
+          </ion-button>
+        </form>
       </ion-col>
     </ion-row>
   </div>

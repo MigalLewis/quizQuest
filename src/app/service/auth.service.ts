@@ -70,6 +70,10 @@ export class AuthService {
     return user(this.auth);
   }
 
+  getUID(): string | null {
+    return this.auth.currentUser?.uid || null;
+  }
+
   get savedUserObservable$(){
     return this.currentUserObservable$.pipe(switchMap(user => {
       return this.firestoreService.userInfo(user?.uid!)

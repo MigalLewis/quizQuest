@@ -4,7 +4,6 @@ import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} fr
 import {IonicModule} from '@ionic/angular';
 import {DatePipe, NgIf, TitleCasePipe} from '@angular/common';
 import {Photo} from '@capacitor/camera';
-import {PhotoService} from '../../service/photo.service';
 import {UserDetail} from '../../service/firestore.service';
 import {FireStorageService} from '../../service/fire-storage.service';
 import {Observable} from "rxjs";
@@ -40,7 +39,6 @@ export class UserDetailsComponent {
   photo?: Photo;
 
   constructor(
-    private photoService: PhotoService,
     private fireStorageService: FireStorageService) {
     this.formGroup = this.createForm();
   }
@@ -70,8 +68,6 @@ export class UserDetailsComponent {
   }
 
   selectImage() {
-    this.photoService.takePhoto()
-      .then(photo => this.photo = photo);
   }
 
   setOpen(isOpen: boolean) {
