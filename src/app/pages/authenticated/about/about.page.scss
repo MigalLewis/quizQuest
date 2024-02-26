@@ -12,9 +12,9 @@
 
     ion-text.about-company p {
         margin-top: 1.5rem;
-        color: $white-color;
+        color: var(--ion-color-text);
         text-align: center;
-        font-family: $lato-font;
+        font-family: var(--ion-font-lato);
         font-size: 0.813rem;
         font-style: normal;
         font-weight: 500;
@@ -24,10 +24,11 @@
 
 .team-section {
     margin-top: 1.5rem;
+    margin-bottom: 3rem;
 
     ion-text p {
-        color: $white-color;
-        font-family: $montserrat-font;
+        color: var(--ion-color-text);
+        font-family: var(ion-fontmontserrat);
         font-size: 0.813rem;
         font-style: normal;
         font-weight: 700;
