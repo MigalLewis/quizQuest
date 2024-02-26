@@ -5,6 +5,6 @@ export interface QuizItem {
     total:number;
     time:number;
     options: string[];
-    selectedOption: string;
+    selectedOption?: string;
     correct?: boolean;
 }

@@ -6,7 +6,7 @@ ion-row {
     ion-text {
         color: var(--ion-color-tertiary);
         text-align: center;
-        font-family: $lato-font;
+        font-family: var(--ion-font-lato);
         font-size: 4rem;
         font-style: normal;
         font-weight: bold;

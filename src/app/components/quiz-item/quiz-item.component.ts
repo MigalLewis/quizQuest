@@ -13,9 +13,16 @@ import { QuizItem } from 'src/app/model/quiz.model';
 export class QuizItemComponent  implements OnInit {
 
   @Input() quizItem!: QuizItem;
+  time: string;
 
-  constructor() { }
+  constructor() { 
+    this.time = 'assets/images/icons/time.svg';
+  }
 
   ngOnInit() {}
+
+  handleChange(ev: any) {
+    console.log('Current value:', JSON.stringify(ev.target.value));
+  }
 
 }

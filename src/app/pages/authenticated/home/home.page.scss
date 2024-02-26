@@ -1,37 +1,7 @@
-@import '../../../../theme//variables.scss';
-
-.add-folder-action {
-    margin-top: 7.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    h4 {
-        color: $light-blue-color;
-        font-family: $montserrat-font;
-        font-size: 1.5rem;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-    }
+ion-content {
+    padding: 24px 0;
 }
 
-.shared-folders-empty {
-    margin-top: 1.5rem;
-
-    ion-text {
-        color: $white-color;
-        text-align: center;
-        font-family: $lato-font;
-        font-size: 1.5rem;
-        font-style: normal;
-        font-weight: 500;
-        line-height: normal;
-    }
-}
-
-.created-folders {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+.content {
+    margin: 74px 0;
 }

@@ -9,7 +9,7 @@ ion-content {
 
     h2 {
         color: #E8F9FD;
-        font-family: $montserrat-font;
+        font-family: var(--ion-font-montserrat);
         font-size: 2.5rem;
         font-style: normal;
         font-weight: 400;
@@ -21,7 +21,7 @@ ion-content {
     ion-text {
         color: #E8F9FD;
         text-align: center;
-        font-family: $lato-font;
+        font-family: var(--ion-font-lato);
         font-size: 1.5rem;
         font-style: normal;
         font-weight: 400;
