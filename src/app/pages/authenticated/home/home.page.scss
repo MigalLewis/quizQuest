@@ -3,11 +3,34 @@ ion-content {
 }
 
 .content {
-    margin: 74px 0;
+    margin-top: 4.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    ion-text {
+        font-family: var(--ion-font-montserrat);
+        line-height: 1.5rem;
+        font-size: 1.125rem;
+        font-weight: 400;
+        display: inline-block;
+        text-align: center;
+    }
+}
+
+.hr-line {
+    margin-top: 2rem;
+    border-bottom: solid 1px #E8F9FD;
+    position: relative;
+}
+
+h3 {
+    font-size: 1rem;
+    font-family: var(ion-font-play);
 }
 
 ion-input {
     padding: 0 12px;
-    background-color: white;
-    color: black;
+    background-color: var(--ion-text-color);
+    color: var(--ion-text-color-dark);
 }

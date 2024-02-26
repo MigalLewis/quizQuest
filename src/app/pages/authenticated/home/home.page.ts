@@ -4,6 +4,7 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { IonicModule, LoadingController } from '@ionic/angular';
 import { SessionService } from 'src/app/service/session.service';
 import { AuthService } from 'src/app/service/auth.service';
+import { BackgroundComponent } from 'src/app/components/background/background.component';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,8 @@ import { AuthService } from 'src/app/service/auth.service';
   imports: [
     IonicModule, 
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BackgroundComponent
   ]
 })
 export class HomePage implements OnInit {
