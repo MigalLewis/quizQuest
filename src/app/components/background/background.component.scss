@@ -1,7 +1,11 @@
 .background-images {
     position: absolute;
-    width: 100%;
-    height: 100%;
+    width: 120%;
+    height: 110%;
+    left: -53px;
+    top: -125px;
+    background: var(--ion-color-primary);
+    z-index: -2;
 }
 
 .filebackground {
@@ -20,8 +24,8 @@
 
     .mainbackground {
         position: absolute;
-        width: 15rem;
-        height: 20rem;
+        width: 100%;
+        height: 100%;
         bottom: 0;
     }
 }

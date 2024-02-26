@@ -6,13 +6,13 @@ export const environment = {
   production: false,
   useEmulators: true,
   firebase: {
-    apiKey: "AIzaSyCL50tnUeH77s8xHXyoZ3lA3vQTADk1Wx0",
-    authDomain: "filevisor.firebaseapp.com",
-    projectId: "filevisor",
-    storageBucket: "filevisor.appspot.com",
-    messagingSenderId: "59129126634",
-    appId: "1:59129126634:web:30d28bdec46e6b28278193",
-    measurementId: "G-BGQD1QQ447"
+    apiKey: "AIzaSyC5PemASz1ZjWui_3X3r3lA7qfPPuTK3nY",
+    authDomain: "quizquest-1dca2.firebaseapp.com",
+    projectId: "quizquest-1dca2",
+    storageBucket: "quizquest-1dca2.appspot.com",
+    messagingSenderId: "688970826393",
+    appId: "1:688970826393:web:53e657b7f1cd710592ee08",
+    measurementId: "G-GP6YSXX0Y8"
   }
 };
 

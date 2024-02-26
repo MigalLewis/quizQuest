@@ -5,7 +5,7 @@ ion-content {
 }
 
 ion-text {
-    color: #E8F9FD;
+    color: var(--ion-text-color);
     font-family: $montserrat-font;
     font-size: 1.125rem;
     font-style: normal;
@@ -28,11 +28,11 @@ ion-text {
 }
 
 .social-media-icon {
-    background: #E8F9FD;
+    background: var(--ion-text-color);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 3px;
     width: 7rem;
-    height: 3rem;
+    height: 4rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -50,7 +50,7 @@ ion-icon {
 }
 
 .hr-line {
-    border-bottom: solid 1px #E8F9FD;
+    border-bottom: solid 1px var(--ion-text-color);
     position: relative;
     bottom: 12px;
     flex: .4;
@@ -61,7 +61,7 @@ ion-icon {
 }
 
 .label {
-    color: #E8F9FD;
+    color: var(--ion-text-color);
     font-family: $lato-font;
     font-size: 1rem;
     font-style: normal;
@@ -73,16 +73,17 @@ input {
     display: block;
     background: transparent;
     border: none;
-    border-bottom: solid 1px #E8F9FD;
-    color: #FFF;
+    border-bottom: solid 1px var(--ion-text-color);
+    color: var(--ion-text-color);
     font-family: $lato-font;
     width: 100%;
     margin-top: .825rem;
+    height: 40px;
 }
 
 .register-prompt {
     display: block;
-    color: #FFF;
+    color: var(--ion-text-color);
     text-align: center;
     font-family: Montserrat;
     font-size: 1rem;

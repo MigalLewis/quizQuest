@@ -1,10 +1,9 @@
-<svg width="352" height="463" viewBox="0 0 352 463" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M-8 26C129.328 -8.64802 191.481 -8.68386 275.754 26C385.286 94.0116 369.229 181.963 275.754 412.937C227.24 467.791 204.673 479.333 166.429 491.552L-8 497.694V26Z" fill="#6EAFDF"/>
-<path d="M-8 67.793C27.469 52.5185 49.4638 53.5192 91.498 67.793C203.318 117.241 174.142 204.477 129.577 355.232C106.18 397.184 90.4726 404.457 60.7887 406.823H-8V67.793Z" fill="#123753" fill-opacity="0.66"/>
-<path d="M-8 170.266C29.6349 156.29 42.5501 172.262 58.332 221.858C68.065 259.526 53.8378 266.623 20.2525 273.45H-8V170.266Z" fill="#6EAFDF" fill-opacity="0.82"/>
-<rect x="-8" y="189.373" width="211.28" height="7.98441" fill="#6EAFDF" fill-opacity="0.64"/>
-<rect x="-8" y="211.484" width="211.28" height="7.98441" fill="#6EAFDF" fill-opacity="0.64"/>
-<rect width="211.28" height="3.07093" transform="matrix(1 0 0 -1 -8 269.832)" fill="#6EAFDF" fill-opacity="0.64"/>
-<rect x="-8" y="231.752" width="211.28" height="19.0397" fill="#6EAFDF" fill-opacity="0.64"/>
-<rect x="-8" y="285.8" width="211.28" height="33.7802" fill="#6EAFDF" fill-opacity="0.64"/>
+<svg width="614" height="1049" viewBox="0 0 614 1049" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M509 804C509 837.689 478.779 865 441.5 865C404.221 865 374 837.689 374 804C374 770.311 404.221 743 441.5 743C478.779 743 509 770.311 509 804Z" fill="#6EAFDF" fill-opacity="0.64"/>
+<ellipse cx="123" cy="622.5" rx="123" ry="105.5" fill="#6EAFDF" fill-opacity="0.64"/>
+<ellipse opacity="0.72" cx="491" cy="105.5" rx="123" ry="105.5" fill="#FF7F00" fill-opacity="0.72"/>
+<ellipse cx="184.5" cy="182.5" rx="61.5" ry="58.5" fill="#FF7F00" fill-opacity="0.72"/>
+<ellipse cx="174" cy="943.5" rx="123" ry="105.5" fill="#FF7F00" fill-opacity="0.72"/>
+<ellipse cx="497" cy="580" rx="75" ry="73" fill="#FF7F00" fill-opacity="0.72"/>
 </svg>
+
