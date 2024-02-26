@@ -7,6 +7,7 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from 'src/environments/environment';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { connectAuthEmulator } from '@firebase/auth';
+import {connectFirestoreEmulator, getFirestore, provideFirestore} from "@angular/fire/firestore";
 
 describe('AuthService', () => {
   let service: AuthService;
@@ -20,8 +21,12 @@ describe('AuthService', () => {
             const auth = getAuth();
             environment.useEmulators ? connectAuthEmulator(auth, 'http://localhost:9099', { disableWarnings: true }) : '';
             return auth;
-    
           }),
+          provideFirestore(() => {
+            const firestore = getFirestore();
+            environment.useEmulators ? connectFirestoreEmulator(firestore, 'localhost', 8080) : '';
+            return firestore
+          })
         ),
       ],
     });

@@ -13,21 +13,21 @@ export class FireStorageService {
   private uuid!: string;
 
   constructor() {
-    this.authService.currentUser.subscribe(user => this.uuid = user!.uid);
+    this.authService.currentUserObservable$.subscribe(user => this.uuid = user!.uid);
   }
 
-  async uploadPhoto(photo: Photo) {  
+  async uploadPhoto(photo: Photo, uid: string) {
     const response = await fetch(photo.webPath!);
     const blob = await response.blob();
-    const storageRef = ref(this.storage, `${this.uuid}/profile_img`);
+    const storageRef = ref(this.storage, `${uid}/profile_img`);
 
     await uploadBytes(storageRef, blob);
 
     return storageRef;
   }
 
-  async saveProfilePhoto(photo: Photo) {
-    const path = this.uploadPhoto(photo);
+  async saveProfilePhoto(photo: Photo, uid: string) {
+    const path = this.uploadPhoto(photo, uid);
     return getDownloadURL(await path);
   }
 }

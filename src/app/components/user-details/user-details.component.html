@@ -21,11 +21,10 @@
       <!-- date of birth -->
       <div class="input-item">
         <span class="label"> Date of birth: * </span>
-        <div [formGroupName]="'dateOfBirth'" class="date" (click)="setOpen(true)">
-          <input [formControlName]="'day'" [type]="'number'" [value]="dateOfBirth ?  dateOfBirth.getDate() : null">
-          <input [formControlName]="'month'" [type]="'text'"
-                 [value]="dateOfBirth ? months[dateOfBirth.getMonth()] : 'null'">
-          <input [formControlName]="'year'" [type]="'number'" [value]="dateOfBirth ? dateOfBirth.getFullYear() : null">
+        <div class="date" (click)="setOpen(true)" >
+          <input [type]="'text'" [value]="dateOfBirth ?  (dateOfBirth | date : 'dd'): null">
+          <input [type]="'text'" [value]="dateOfBirth ?  (dateOfBirth | date : 'MMM') : null">
+          <input [type]="'text'" [value]="dateOfBirth ? (dateOfBirth | date: 'yyyy') : null">
         </div>
 
         <ion-modal id="pick-date" [isOpen]="isModalOpen" (didDismiss)="isModalOpen = false">

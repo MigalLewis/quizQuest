@@ -35,7 +35,7 @@ export class AuthenticatedPage implements OnInit {
   }
 
   ngOnInit(): void {
-    this.authService.currentUser
+    this.authService.currentUserObservable$
     .pipe(switchMap(
       currentUser => this.firestoreService.userInfo(currentUser!.uid)))
     .subscribe(user => this.user = user);
