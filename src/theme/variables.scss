@@ -81,6 +81,11 @@
   --ion-color-incorrect-rgba: rgba(244, 67, 54, 1);
 
   --ion-text-color: #ffffff;
+
+  --ion-font-play: Play, sans-serif;
+  --ion-font-lato: Lato, sans-serif;
+  --ion-font-montserrat: Montserrat, sans-serif;
+  --ion-background-color: #4A90E2;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -243,9 +248,7 @@
 }
 
 /* Font Variables */
-$play-font: Play, sans-serif;
-$lato-font: Lato, sans-serif;
-$montserrat-font: Montserrat, sans-serif;
+
 
 /* Color variables */
 $light-blue-color: #E8F9FD;

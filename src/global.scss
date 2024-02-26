@@ -85,7 +85,7 @@ ion-modal.show-folder-actions .wrapper {
 }
 
 .btn {
-    font-family: $montserrat-font;
+    font-family: var(--ion-font-montserrat);
     font-style: normal;
     font-weight: 400;
     font-size: 1.125rem;
@@ -110,7 +110,7 @@ ion-button {
 .toast-class {
     --color: $white-color;
     text-align: center;
-    font-family: $lato-font;
+    font-family: var(--ion-font-lato);
     font-size: 1rem;
     font-style: normal;
     font-weight: 500;
@@ -120,7 +120,7 @@ ion-button {
 .toast-class-error {
     --color: var(--ion-color-danger);
     text-align: center;
-    font-family: $lato-font;
+    font-family: var(--ion-font-lato);
     font-size: 1rem;
     font-style: normal;
     font-weight: 500;
