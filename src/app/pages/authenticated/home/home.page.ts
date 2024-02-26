@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule, LoadingController } from '@ionic/angular';
+import { BackgroundComponent } from 'src/app/components/background/background.component';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,8 @@ import { IonicModule, LoadingController } from '@ionic/angular';
   imports: [
     IonicModule, 
     CommonModule, 
-    FormsModule
+    FormsModule,
+    BackgroundComponent
   ]
 })
 export class HomePage implements OnInit {
