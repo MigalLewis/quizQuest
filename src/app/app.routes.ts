@@ -2,8 +2,6 @@ import { Routes } from '@angular/router';
 import { AuthenticatedPage } from './pages/authenticated/authenticated.page';
 import { HomePage } from './pages/authenticated/home/home.page';
 import { AboutPage } from './pages/authenticated/about/about.page';
-import { ViewFolderPage } from './pages/authenticated/view-folder/view-folder.page';
-import { ViewPhotoPage } from './pages/authenticated/view-photo/view-photo.page';
 import { HelpPage } from './pages/authenticated/help/help.page';
 import { GuidedVideosPage } from './pages/authenticated/help/guided-videos/guided-videos.page';
 import { HackedPage } from './pages/authenticated/help/hacked/hacked.page';
@@ -32,14 +30,6 @@ export const routes: Routes = [
       {
         path: 'about',
         component: AboutPage
-      },
-      {
-        path: 'view/folder/:id',
-        component: ViewFolderPage
-      },
-      {
-        path: 'view/folder/:id/:photoId',
-        component: ViewPhotoPage
       },
       {
         path: 'help',

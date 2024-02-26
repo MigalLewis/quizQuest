@@ -1,27 +1,11 @@
 <ion-content [fullscreen]="true">
-  <ion-row class="add-folder-action">
-    <h4>My Folders :</h4>
-    <svg id="open-custom-dialog" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"
-      fill="none">
-      <circle cx="20" cy="20" r="20" fill="white" />
-      <path d="M20 15V25" stroke="#6EAFDF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-      <path d="M15 20H25" stroke="#6EAFDF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-    </svg>
+  <ion-row>
+    <ion-col size="12">
+      <ion-text>"Welcome to QuizQuest: Live Trivia Nights! 🎉 You've just embarked on an exciting journey filled with fun, challenges, and endless learning opportunities. Get ready to test your knowledge, compete with friends, and climb the leaderboard to glory. We're thrilled to have you in our community of trivia enthusiasts. Let the quest begin!"</ion-text>
+    </ion-col>
+    <ion-col size="12">
+      <hr>
+      <h3>Join Game</h3>
+    </ion-col>
   </ion-row>
-  <ion-row class="shared-folders-empty" *ngIf="folders.length === 0">
-    <ion-text>You currently have no shared folders</ion-text>
-
-  </ion-row>
-
-  <div class="created-folders">
-    <app-folder *ngFor="let folder of folders" [folder]="folder" (click)="showOptions(folder.id)"></app-folder>
-  </div>
-
-  <ion-modal id="create-folder-modal" #modal trigger="open-custom-dialog">
-    <ng-template>
-      <div class="wrapper">
-        <app-create-folder (closeModal)="modal.dismiss()" (createFolder)="createFolder($event)"></app-create-folder>
-      </div>
-    </ng-template>
-  </ion-modal>
 </ion-content>
