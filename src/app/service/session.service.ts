@@ -36,4 +36,8 @@ export class SessionService {
   getQuiz(id: string): Observable<Quiz> {
     return docData(doc(this.firestore, 'quiz/'+ id)) as Observable<Quiz>;
   }
+
+  getAllQuiz(): Observable<Quiz[]> {
+    return collectionData(collection(this.firestore, 'quiz')) as Observable<Quiz[]>;
+  }
 }
