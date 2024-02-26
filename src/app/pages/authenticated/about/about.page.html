@@ -1,7 +1,6 @@
 <ion-content [fullscreen]="true">
   <div class="company">
-    <ion-img class="logo" src="../../../../assets/images/pacifish.png"
-      alt="The Wisconsin State Capitol building in Madison, WI at night"></ion-img>
+    <ion-img class="logo" src="../../../../assets/images/pacifish.png"></ion-img>
     <ion-text class="about-company">
       <p>Welcome to Pacifish, a thriving software company dedicated to nurturing young minds
         brimming with curiosity and a passion for knowledge. Our journey is one of continuous growth, where we embrace
@@ -15,6 +14,6 @@
     <ion-text class="team-heading">
       <p>Meet the team that built this Application</p>
     </ion-text>
-    <app-team-card></app-team-card>
+    <app-team-card [team]="team"></app-team-card>
   </div>
 </ion-content>
