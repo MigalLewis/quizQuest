@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule, LoadingController } from '@ionic/angular';
 import { BackgroundComponent } from 'src/app/components/background/background.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +19,9 @@ import { BackgroundComponent } from 'src/app/components/background/background.co
 })
 export class HomePage implements OnInit {
 
-  constructor(private loadingCtrl: LoadingController) {
+  constructor(
+    private loadingCtrl: LoadingController,
+    private router: Router) {
 
    }
 
@@ -31,6 +34,10 @@ export class HomePage implements OnInit {
     // loading.present();
 
     // this.loadingCtrl.dismiss();
+  }
+
+  enterGame() {
+    this.router.navigate(['authenticated','pre', 'game'])
   }
 
 }
