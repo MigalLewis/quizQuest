@@ -11,6 +11,12 @@
   </ion-card-header>
 
   <ion-card-content>
+    <div *ngIf="quizItem.correct === true" class="pill pill-correct">
+      <ion-text>👏🏼 Correct</ion-text>
+    </div>
+    <div *ngIf="quizItem.correct === false" class="pill pill-incorrect">
+      <ion-text>😿 Incorrect</ion-text>
+    </div>
     <ion-list>
       <ion-radio-group (ionChange)="handleChange($event)">
         <ion-item justify="center" class="custom-radio" *ngFor="let option of quizItem.options;">
