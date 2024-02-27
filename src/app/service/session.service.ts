@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { QuizItem } from '../model/quiz.model';
 import { Firestore, doc, docData, setDoc } from '@angular/fire/firestore';
-import { Observable, of } from 'rxjs';
+import { Observable, of, take } from 'rxjs';
 import { NotificationService } from './notification.service';
 
 @Injectable({
@@ -16,9 +16,8 @@ export class SessionService {
 
   joinSession(gameCode: string, userID: string) {
     let sessionRef = doc(this.firestore, `${this.SESSION_COLLECTION}/${gameCode}`);
-    docData(sessionRef).subscribe((session: any) => {
-      console.log('session');
-      console.log(session);
+    docData(sessionRef)
+    .pipe(take(1)).subscribe((session: any) => {
       if (session) {
         const users = session.users || [];
         users.push(userID);
