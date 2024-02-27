@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { QuizItem } from '../model/quiz.model';
-import { Firestore, doc, docData, setDoc } from '@angular/fire/firestore';
-import { Observable, of, take } from 'rxjs';
+import { Quiz, QuizItem } from '../model/quiz.model';
+import { Firestore, collection, collectionData, doc, docData, setDoc } from '@angular/fire/firestore';
+import { Observable, of } from 'rxjs';
 import { NotificationService } from './notification.service';
 
 @Injectable({
@@ -9,15 +9,17 @@ import { NotificationService } from './notification.service';
 })
 export class SessionService {
   SESSION_COLLECTION = 'sessions';
+  QUIZ_COLLECTION = 'quiz';
 
   constructor(private firestore: Firestore,
               private alertService: NotificationService
     ) { }
 
   joinSession(gameCode: string, userID: string) {
-    let sessionRef = doc(this.firestore, `${this.SESSION_COLLECTION}/${gameCode}`);
-    docData(sessionRef)
-    .pipe(take(1)).subscribe((session: any) => {
+    let sessionRef = doc(this.firestore, 'sessions/'+gameCode);
+    docData(sessionRef).subscribe((session: any) => {
+      console.log('session');
+      console.log(session);
       if (session) {
         const users = session.users || [];
         users.push(userID);
@@ -31,21 +33,11 @@ export class SessionService {
     });
   }
 
-  getNextQuizItems(): Observable<QuizItem[]> {
-    return of([
-      {
-        id: '12',
-        no: 4,
-        total: 12,
-        question: 'What is the smallest country in the world by land area?',
-        options: [
-          'Monaco',
-          'Nauru',
-          'Vatican City',
-          'Liechtenstein'
-        ],
-        time: 60
-      }
-    ])
+  getQuiz(id: string): Observable<Quiz> {
+    return docData(doc(this.firestore, 'quiz/'+ id)) as Observable<Quiz>;
+  }
+
+  getAllQuiz(): Observable<Quiz[]> {
+    return collectionData(collection(this.firestore, 'quiz')) as Observable<Quiz[]>;
   }
 }
