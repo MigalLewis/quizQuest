@@ -5,6 +5,7 @@ import { IonicModule, LoadingController } from '@ionic/angular';
 import { SessionService } from 'src/app/service/session.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { BackgroundComponent } from 'src/app/components/background/background.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',

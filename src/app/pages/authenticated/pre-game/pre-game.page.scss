@@ -1,0 +1,64 @@
+@import '../../../../theme/variables.scss';
+
+ion-content {
+    --padding-start: 0;
+    --padding-end: 0;
+}
+
+.content {
+    margin-top: 3.5rem;
+    height: 100%;
+
+    .header-section {
+        font-size: 1.125rem;
+        font-family: var(--ion-font-play);
+        font-weight: 400;
+        width: 100%;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+
+        .hr-line {
+            margin-top: .5rem;
+            margin-bottom: .825rem;
+            border-bottom: solid 1px #E8F9FD;
+            position: relative;
+            width: 100%;
+        }
+
+        svg {
+            display: inline-block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: .825rem;
+            width: 100%;
+        }
+    }
+
+    .body-section {
+        margin-top: 1.125rem;
+        width: 100%;
+        background-color: #fff;
+        height: 100%;
+        border-radius: 12px 12px 0 0;
+        padding-top: 0.825rem;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+
+        .player {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: inherit;
+
+            ion-text {
+                font-size: .825rem;
+                font-family: var(--ion-font-play);
+                font-weight: 400;
+                width: 100%;
+                color: #000000;
+                display: inline-block;
+                text-align: center;
+            }
+        }
+    }
+}
