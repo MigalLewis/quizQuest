@@ -12,9 +12,11 @@
         <form [formGroup]="formGroup">
           <ion-label class="margin-bottom-small">Enter Game Code</ion-label>
           <ion-input formControlName="gameCode" fill="solid" class="margin-bottom-small"></ion-input>
-          <ion-button (click)="onJoin()" color="secondary">
-            Join
-          </ion-button>
+          <div class="join-btn-container">
+            <ion-button (click)="onJoin()" class="btn">
+              Join
+            </ion-button>
+          </div>
         </form>
       </ion-col>
     </ion-row>
