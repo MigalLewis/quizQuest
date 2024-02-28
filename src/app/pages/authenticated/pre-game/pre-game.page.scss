@@ -49,6 +49,22 @@ ion-content {
             align-items: center;
             justify-content: space-between;
             width: inherit;
+            height: max-content;
+
+            .image {
+                border-radius: 50%;
+                overflow: hidden;
+                width: 3.5rem;
+                height: 2.5rem;
+                margin-left: 0.25rem;
+
+                ion-img {
+                    display: block;
+                    width: inherit;
+                    height: inherit;
+                    object-fit: cover;
+                }
+            }
 
             ion-text {
                 font-size: .825rem;

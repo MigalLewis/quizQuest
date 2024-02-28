@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
+import { SessionService } from 'src/app/service/session.service';
+import { QuizSession } from 'src/app/model/quiz.model';
+import { switchMap } from 'rxjs';
+import { UserDetail } from 'src/app/service/firestore.service';
 
 @Component({
   selector: 'app-pre-game',
@@ -10,11 +14,24 @@ import { IonicModule } from '@ionic/angular';
   standalone: true,
   imports: [IonicModule, CommonModule, FormsModule]
 })
-export class PreGamePage implements OnInit {
+export class PreGamePage {
+  session!: QuizSession;
+  users!: UserDetail[];
 
-  constructor() { }
 
-  ngOnInit() {
+  constructor(private sessionService: SessionService) { }
+
+
+  @Input()
+  set gameCode(code: string) {
+    this.sessionService.getSessionByGameCode(code)
+      .pipe(
+        switchMap(session => {
+        this.session = session;
+        const uids = session.users!;
+        return this.sessionService.getSessionUsersByUids(uids);
+      }))
+      .subscribe(users => this.users = users);
   }
 
 }

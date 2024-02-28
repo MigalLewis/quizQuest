@@ -21,3 +21,10 @@ export interface UserAnswer {
     timestamp: Timestamp;
     correct: boolean;
 }
+
+export interface QuizSession {
+    gameCode: string;
+    users?: string[];
+    quiz?: string;
+    host?: string;
+}
