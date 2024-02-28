@@ -62,7 +62,7 @@ export const routes: Routes = [
         component: ProfilePage
       },
       {
-        path: 'pre/game',
+        path: 'pre/game/:gameCode',
         component: PreGamePage
       },
     ]
