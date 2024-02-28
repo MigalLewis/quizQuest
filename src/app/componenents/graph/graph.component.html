@@ -1,0 +1,29 @@
+<ion-row class="graph">
+  <ion-col class="player-stat" *ngFor="let player of switchedPlayerIndexes() | slice:0:3; let i=index">
+    <div class="bar" [ngStyle]="{'height': getBarHeight(i)}">
+      <div class="position">
+        <ion-text>
+          {{ playerPosition(player.position) }}
+        </ion-text>
+      </div>
+    </div>
+    <div class="ion-no-padding ion-no-margin">
+      <div class="avatar">
+        <ion-img *ngIf="player.photoUrl; else placeHolder" [src]="player.photoUrl"></ion-img>
+        <ng-template #placeHolder>
+          <ion-icon name="person-circle-outline" color="tertiary"></ion-icon>
+        </ng-template>
+
+      </div>
+      <ion-text>{{player.name}}</ion-text>
+      <ion-text>
+        <ion-icon name="trophy-outline"></ion-icon>
+        {{player.points}} Points
+      </ion-text>
+      <ion-text>
+        <ion-icon name="alarm-outline"></ion-icon>
+        {{player.completionTime}}
+      </ion-text>
+    </div>
+  </ion-col>
+</ion-row>
