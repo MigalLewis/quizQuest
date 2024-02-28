@@ -1,0 +1,77 @@
+@import '../../../theme/variables.scss';
+
+.graph {
+    margin-top: 1.5rem;
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+
+    ion-col.player-stat {
+        width: 2rem;
+        --ion-grid-column-padding: .3rem;
+        display: flex;
+        flex-direction: column-reverse;
+
+        ion-text {
+            font-size: 0.813rem;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            text-overflow: clip;
+            white-space: nowrap;
+
+            ion-icon {
+                margin-right: 0.5rem;
+            }
+        }
+
+        .avatar {
+            border-radius: 50%;
+            overflow: auto;
+            width: 4.5rem;
+            height: 4.5rem;
+            border: 2.5px solid var(--ion-color-tertiary);
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 0.813rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            ion-img {
+                display: block;
+                width: auto;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            ion-icon {
+                font-size: 4rem;
+            }
+        }
+
+        .bar {
+            background-color: #fff;
+            margin-top: 1.5rem;
+            border-radius: 0.813rem 0.813rem 0 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .position {
+                background-color: var(--ion-color-primary);
+                width: 3.5rem;
+                height: 3.5rem;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                ion-text {
+                    font-weight: 700;
+                    font-size: 1.125rem;
+                }
+            }
+        }
+    }
+}

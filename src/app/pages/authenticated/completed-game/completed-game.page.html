@@ -1,0 +1,49 @@
+<ion-content [fullscreen]="true">
+  <div class="content">
+    <div class="header-section">
+      <div class="category">
+        <ion-text>Category: Music</ion-text>
+      </div>
+      <app-graph [players]="players | slice:0:3"></app-graph>
+    </div>
+
+    <div class="body-section">
+      <ion-row class="player" *ngFor="let player of players | slice:3">
+        <ion-col class="position ion-no-padding ion-no-margin">
+          <ion-text>
+            {{ player.position + 'th'}}
+          </ion-text>
+        </ion-col>
+        <ion-col class="user-info" size="7">
+          <div class="avatar">
+            <ion-img *ngIf="player.photoUrl; else placeHolder" [src]="player.photoUrl"></ion-img>
+            <ng-template #placeHolder>
+              <ion-icon name="person-circle-outline" color="tertiary"></ion-icon>
+            </ng-template>
+          </div>
+          <ion-text>{{player.name}}</ion-text>
+        </ion-col>
+        <ion-col class="stats" size="3">
+          <ion-text>
+            <ion-icon name="trophy-outline"></ion-icon>
+            {{player.points +' Points'}}
+          </ion-text>
+          <ion-text>
+            <ion-icon name="alarm-outline"></ion-icon>
+            {{player.completionTime}}
+          </ion-text>
+        </ion-col>
+      </ion-row>
+    </div>
+
+    <div class="footer-section">
+      <div class="share-board">
+        <ion-text>
+          <ion-icon name="share-social-outline"></ion-icon>
+          Share Leader Board
+        </ion-text>
+      </div>
+
+    </div>
+  </div>
+</ion-content>
