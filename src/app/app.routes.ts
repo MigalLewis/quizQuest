@@ -13,6 +13,7 @@ import { UnauthenticatedGuard } from './guard/unauthenticated.guard';
 import {ProfilePage} from './pages/authenticated/profile/profile.page';
 import { PreGamePage } from './pages/authenticated/pre-game/pre-game.page';
 import {TriviaPage } from './pages/authenticated/trivia/trivia.component';
+import { CompletedGamePage } from './pages/authenticated/completed-game/completed-game.page';
 
 export const routes: Routes = [
   {
@@ -65,6 +66,10 @@ export const routes: Routes = [
         path: 'pre/game/:gameCode',
         component: PreGamePage
       },
+      {
+        path: 'completed/game',
+        component: CompletedGamePage
+      }
     ]
   },
   {

@@ -1,0 +1,129 @@
+@import '../../../../theme/variables.scss';
+
+ion-content {
+    --padding-start: 0;
+    --padding-end: 0;
+}
+
+.content {
+    margin-top: 3.5rem;
+    height: 100%;
+    font-family: var(--ion-font-play);
+
+    .header-section {
+        font-size: 1.125rem;
+        font-weight: 400;
+        width: 100%;
+        padding-left: 1rem;
+        padding-right: 1rem;
+
+        .category {
+            background: var(--ion-color-tertiary);
+            height: 2.25rem;
+            border-radius: 0.813rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            ion-text {
+                font-weight: 700;
+                font-size: 1.5rem;
+            }
+        }
+    }
+
+    .body-section {
+        margin-top: 1.5rem;
+        background-color: #fff;
+        width: 100%;
+        border-radius: 0.813rem 0.813rem 0 0;
+        padding-top: 0.5rem;
+
+        .player {
+            padding-left: 1rem;
+            padding-right: 1rem;
+
+            ion-text {
+                color: #000000;
+            }
+
+            .position {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                ion-text {
+                    font-size: 1.25rem;
+                    font-weight: 700;
+                }
+            }
+
+            ion-col.user-info {
+                display: flex;
+                align-items: center;
+
+                ion-text {
+                    font-size: 0.813rem;
+                }
+            }
+
+            .avatar {
+                border-radius: 50%;
+                overflow: auto;
+                width: 3.5rem;
+                height: 3.5rem;
+                margin-right: .813rem;
+                margin-bottom: 0.813rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                ion-img {
+                    display: block;
+                    width: auto;
+                    height: 100%;
+                    object-fit: cover;
+                }
+
+                ion-icon {
+                    font-size: 3rem;
+                }
+            }
+
+            .stats {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                margin-left: 0.25rem;
+
+                ion-text {
+                    font-size: 0.813rem;
+                }
+            }
+        }
+    }
+
+    .footer-section {
+        margin-top: 1.5rem;
+        display: flex;
+        justify-content: center;
+        font-size: 1.125rem;
+
+        .share-board {
+            border: 1px solid white;
+            border-radius: .813rem;
+            padding: 0.5rem;
+            width: 70%;
+
+            ion-text {
+                ion-icon {
+                    margin-right: 0.2rem;
+                }
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    }
+}
