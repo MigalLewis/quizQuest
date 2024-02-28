@@ -49,7 +49,7 @@ export class SessionService {
   }
 
   getSessionUsersByUids(uids: string[]) {
-    const q  = query(collection(this.firestore, 'users'), where('uid', 'in',uids));
-    return collectionData(q) as Observable<UserDetail[]>;
+    const sessionUsersQuery  = query(collection(this.firestore, 'users'), where('uid', 'in',uids));
+    return collectionData(sessionUsersQuery) as Observable<UserDetail[]>;
   }
 }
