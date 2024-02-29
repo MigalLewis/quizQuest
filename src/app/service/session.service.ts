@@ -13,6 +13,7 @@ export class SessionService {
   SESSION_COLLECTION = 'sessions';
   QUIZ_COLLECTION = 'quiz';
   dataArrived: Subject<void>;
+  private session: QuizSession | null = null;
 
   constructor(private firestore: Firestore,
               private alertService: NotificationService,
@@ -29,6 +30,7 @@ export class SessionService {
         const users = session.users || [];
         users.push(userID);
         setDoc(sessionRef, { users }, { merge: true });
+        this.setSession(session);
         this.router.navigate(['authenticated', 'pre', 'game', session.gameCode ]);
         this.dataArrived.next();
       } else {
@@ -55,5 +57,17 @@ export class SessionService {
   getSessionUsersByUids(uids: string[]) {
     const sessionUsersQuery  = query(collection(this.firestore, 'users'), where('uid', 'in',uids));
     return collectionData(sessionUsersQuery) as Observable<UserDetail[]>;
+  }
+
+  setSession(session: QuizSession) {
+    this.session = session;
+  }
+
+  getSession(): QuizSession | null {
+    return this.session;
+  }
+
+  clearSession() {
+    this.session = null;
   }
 }
