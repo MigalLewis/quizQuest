@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
+import { Observable } from 'rxjs';
 import { QuizItem } from 'src/app/model/quiz.model';
 
 @Component({
@@ -8,35 +10,36 @@ import { QuizItem } from 'src/app/model/quiz.model';
   templateUrl: './quiz-item.component.html',
   styleUrls: ['./quiz-item.component.scss'],
   standalone: true,
-  imports: [ IonicModule, CommonModule],
+  imports: [ IonicModule,
+              ReactiveFormsModule,
+              CommonModule],
 })
 export class QuizItemComponent  implements OnInit {
 
   @Input() quizItem: QuizItem | undefined;
-  @Output() select!: EventEmitter<{
-    id: string, 
-    selectedOption: string | undefined, 
-    correct: boolean}>;
+  @Input() formGroup!: FormGroup;
   correct!: boolean;
   selectedOption: string | undefined;
 
 
   constructor() { 
-    this.select = new EventEmitter();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
-  handleChange(ev: any) {
-    console.log('Current value:', JSON.stringify(ev.target.value));
+  handleChange(option: string) {
+    this.selectedOption = option;
     this.isCorrect();
-    this.select.emit(
-      {
-        correct: this.correct,
-        id: this.quizItem?.question? this.quizItem.question: '',
-        selectedOption: this.selectedOption
-      }
-    )
+    if (this.formGroup) {
+      this.formGroup.patchValue({
+        selectedOption: {
+          correct: this.correct,
+          id: this.quizItem?.question? this.quizItem.question: '',
+          selectedOption: option
+        }
+      });
+    }
   }
 
   isCorrect() {

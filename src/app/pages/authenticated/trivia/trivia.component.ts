@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 import { QuizItemComponent } from 'src/app/components/quiz-item/quiz-item.component';
@@ -27,25 +27,21 @@ export class TriviaPage  implements OnInit, OnDestroy {
   subscriptions: Subscription[];
   currentQuizItem: QuizItem | undefined;
   timer!: number;
-  timerSubscription: Subscription;
   allowSelection: boolean;
   timeIcon: string;
+  quizForm: FormGroup;
 
   constructor(private sessionService: SessionService,
+              private fb: FormBuilder,
               private timerService: TimerService) { 
     this.subscriptions = [];
+    this.quizForm = this.createFormGroup();
     this.timeIcon = 'assets/images/icons/time.svg';
     this.allowSelection = true;
-    this.timerSubscription = this.timerService.getTimer().subscribe(timer => {
-      this.timer = timer;
-      if (timer === 0) {
-        this.allowSelection = false;
-        console.log(this.allowSelection);
-      }
-    });
   }
 
   ngOnInit() {
+    this.setupTimer();
     let session = this.sessionService.getSession();
     if(session && session.quiz) {
       this.subscriptions.push(
@@ -56,10 +52,6 @@ export class TriviaPage  implements OnInit, OnDestroy {
       );
     }
 
-  }
-
-  ngOnDestroy(): void {
-    this.subscriptions.forEach(s => s.unsubscribe());
   }
 
   nextQuestion(no: number) {
@@ -78,6 +70,29 @@ export class TriviaPage  implements OnInit, OnDestroy {
       return this.timer * 1000;
     }
     return 0;
+  }
+
+  createFormGroup(): FormGroup {
+    return this.fb.group({
+      selectedOption: ['']
+    });
+  }
+
+  setupTimer() {
+    this.subscriptions.push(this.timerService.getTimer().subscribe(timer => {
+      this.timer = timer;
+      if (timer === 0) {
+        this.allowSelection = false;
+        console.log(this.allowSelection);
+        this.quizForm.disable();
+      } else {
+        this.quizForm.enable();
+      }
+    }));
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(s => s.unsubscribe());
   }
 
 }

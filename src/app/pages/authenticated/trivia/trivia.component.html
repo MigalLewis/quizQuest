@@ -1,7 +1,8 @@
 <div class="content">
   <ion-row>
     <ion-col size="12">
-      <app-quiz-item [quizItem]="currentQuizItem" (select)="onSelect($event)">
+      <app-quiz-item [quizItem]="currentQuizItem" 
+                      [formGroup]="quizForm">
         <div header class="header">
           <ion-text>Question {{currentQuizItem?.no}} of {{currentQuizItem?.total}}</ion-text>
           <div class="time">

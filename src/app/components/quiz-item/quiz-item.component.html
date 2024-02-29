@@ -1,25 +1,30 @@
-<ion-card>
-  <ion-card-header>
-    <ion-card-subtitle>
-      <ng-content select="[header]"></ng-content>
-    </ion-card-subtitle>
-    <ion-card-title>{{quizItem?.question}}</ion-card-title>
-  </ion-card-header>
+<form [formGroup]="formGroup">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>
+        <ng-content select="[header]"></ng-content>
+      </ion-card-subtitle>
+      <ion-card-title>{{quizItem?.question}}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <div *ngIf="correct === true" class="pill pill-correct">
+        <ion-text>👏🏼 Correct</ion-text>
+      </div>
+      <div *ngIf="correct === false" class="pill pill-incorrect">
+        <ion-text>😿 Incorrect</ion-text>
+      </div>
+      <ion-list>
+        <ion-radio-group formControlName="selectedOption" >
+          <ion-item justify="center" class="custom-radio" *ngFor="let option of quizItem?.options;">
+            <ion-radio (ionSelect)="handleChange(option)"
+              [disabled]="formGroup.disabled"
+             [value]="option">{{ option }}</ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</form>
 
-  <ion-card-content>
-    <div *ngIf="correct === true" class="pill pill-correct">
-      <ion-text>👏🏼 Correct</ion-text>
-    </div>
-    <div *ngIf="correct === false" class="pill pill-incorrect">
-      <ion-text>😿 Incorrect</ion-text>
-    </div>
-    <ion-list>
-      <ion-radio-group (ionChange)="handleChange($event)">
-        <ion-item justify="center" class="custom-radio" *ngFor="let option of quizItem?.options;">
-          <ion-radio [value]="option">{{ option }}</ion-radio>
-        </ion-item>
-      </ion-radio-group>
-    </ion-list>
-  </ion-card-content>
-</ion-card>
 
