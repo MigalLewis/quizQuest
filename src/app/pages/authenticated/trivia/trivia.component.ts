@@ -30,6 +30,8 @@ export class TriviaPage  implements OnInit, OnDestroy {
   allowSelection: boolean;
   timeIcon: string;
   quizForm: FormGroup;
+  correct!: boolean;
+  started: boolean;
 
   constructor(private sessionService: SessionService,
               private fb: FormBuilder,
@@ -38,6 +40,7 @@ export class TriviaPage  implements OnInit, OnDestroy {
     this.quizForm = this.createFormGroup();
     this.timeIcon = 'assets/images/icons/time.svg';
     this.allowSelection = true;
+    this.started = false;
   }
 
   ngOnInit() {
@@ -57,7 +60,10 @@ export class TriviaPage  implements OnInit, OnDestroy {
   nextQuestion(no: number) {
     this.currentQuizItem = this.quiz.quizItems.find(qi => qi.no === no);
     if(this.currentQuizItem) {
+      console.log('nextQuestion');
+      console.log(this.currentQuizItem.time);
       this.timerService.startTimer(this.currentQuizItem.time);
+      this.started = true;
     }
   }
 
@@ -81,9 +87,9 @@ export class TriviaPage  implements OnInit, OnDestroy {
   setupTimer() {
     this.subscriptions.push(this.timerService.getTimer().subscribe(timer => {
       this.timer = timer;
-      if (timer === 0) {
+      if (timer === 0 && this.started) {
         this.allowSelection = false;
-        console.log(this.allowSelection);
+        this.checkAnswer();
         this.quizForm.disable();
       } else {
         this.quizForm.enable();
@@ -91,8 +97,20 @@ export class TriviaPage  implements OnInit, OnDestroy {
     }));
   }
 
+  checkAnswer() {
+    if(this.currentQuizItem 
+      && this.quizForm.get('selectedOption')?.value 
+      && this.currentQuizItem.correctAnswer === this.quizForm.get('selectedOption')?.value) {
+      this.correct = true;
+    } else {
+      this.correct = false;
+    }
+  }
+
   ngOnDestroy(): void {
     this.subscriptions.forEach(s => s.unsubscribe());
   }
+
+
 
 }

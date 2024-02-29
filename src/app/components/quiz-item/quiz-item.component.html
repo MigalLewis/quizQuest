@@ -8,12 +8,7 @@
     </ion-card-header>
   
     <ion-card-content>
-      <div *ngIf="correct === true" class="pill pill-correct">
-        <ion-text>👏🏼 Correct</ion-text>
-      </div>
-      <div *ngIf="correct === false" class="pill pill-incorrect">
-        <ion-text>😿 Incorrect</ion-text>
-      </div>
+      <ng-content select="[result]"></ng-content>
       <ion-list>
         <ion-radio-group formControlName="selectedOption" >
           <ion-item justify="center" class="custom-radio" *ngFor="let option of quizItem?.options;">

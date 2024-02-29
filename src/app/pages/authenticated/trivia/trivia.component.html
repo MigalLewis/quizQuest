@@ -10,6 +10,14 @@
             <ion-text>{{getTime() | date:'mm:ss'}}</ion-text>
           </div>
         </div>
+        <div result class="header">
+          <div *ngIf="correct === true" class="pill pill-correct">
+            <ion-text>👏🏼 Correct</ion-text>
+          </div>
+          <div *ngIf="correct === false" class="pill pill-incorrect">
+            <ion-text>😿 Incorrect</ion-text>
+          </div>
+        </div>
       </app-quiz-item>
     </ion-col>
   </ion-row>
