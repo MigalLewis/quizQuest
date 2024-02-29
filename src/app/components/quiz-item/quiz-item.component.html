@@ -1,11 +1,7 @@
 <ion-card>
   <ion-card-header>
     <ion-card-subtitle>
-        <ion-text>Question {{quizItem?.no}} of {{quizItem?.total}}</ion-text>
-        <div class="time">
-          <ion-icon [src]="time" class="font-size-60"></ion-icon>
-          <ion-text>{{getTime() | date:'mm:ss'}}</ion-text>
-        </div>
+      <ng-content select="[header]"></ng-content>
     </ion-card-subtitle>
     <ion-card-title>{{quizItem?.question}}</ion-card-title>
   </ion-card-header>

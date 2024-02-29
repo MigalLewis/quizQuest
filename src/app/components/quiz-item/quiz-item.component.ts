@@ -17,13 +17,11 @@ export class QuizItemComponent  implements OnInit {
     id: string, 
     selectedOption: string | undefined, 
     correct: boolean}>;
-  time: string;
   correct!: boolean;
   selectedOption: string | undefined;
 
 
   constructor() { 
-    this.time = 'assets/images/icons/time.svg';
     this.select = new EventEmitter();
   }
 
@@ -46,13 +44,6 @@ export class QuizItemComponent  implements OnInit {
       this.correct = true;
     }
     this.correct = false;
-  }
-
-  getTime():number {
-    if(this.quizItem && this.quizItem.time) {
-      return this.quizItem.time * 1000;
-    }
-    return 0;
   }
 
 }

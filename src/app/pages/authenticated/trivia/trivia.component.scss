@@ -2,3 +2,19 @@
 .content {
     margin-top: 4.5rem; 
 }
+
+.time {
+    display: flex;
+
+    ion-icon {
+        margin-right: 12px;
+    }
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--ion-font-play);
+    font-size: 18px;
+    margin-bottom: 24px;
+}

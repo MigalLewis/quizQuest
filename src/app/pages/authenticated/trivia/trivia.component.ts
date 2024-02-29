@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 import { QuizItemComponent } from 'src/app/components/quiz-item/quiz-item.component';
 import { Quiz, QuizItem } from 'src/app/model/quiz.model';
 import { SessionService } from 'src/app/service/session.service';
+import { TimerService } from 'src/app/service/timer-service.service';
 
 
 @Component({
@@ -25,10 +26,23 @@ export class TriviaPage  implements OnInit, OnDestroy {
   quiz!: Quiz;
   subscriptions: Subscription[];
   currentQuizItem: QuizItem | undefined;
+  timer!: number;
+  timerSubscription: Subscription;
+  allowSelection: boolean;
+  timeIcon: string;
 
-  constructor(private sessionService: SessionService) { 
+  constructor(private sessionService: SessionService,
+              private timerService: TimerService) { 
     this.subscriptions = [];
-
+    this.timeIcon = 'assets/images/icons/time.svg';
+    this.allowSelection = true;
+    this.timerSubscription = this.timerService.getTimer().subscribe(timer => {
+      this.timer = timer;
+      if (timer === 0) {
+        this.allowSelection = false;
+        console.log(this.allowSelection);
+      }
+    });
   }
 
   ngOnInit() {
@@ -50,10 +64,20 @@ export class TriviaPage  implements OnInit, OnDestroy {
 
   nextQuestion(no: number) {
     this.currentQuizItem = this.quiz.quizItems.find(qi => qi.no === no);
+    if(this.currentQuizItem) {
+      this.timerService.startTimer(this.currentQuizItem.time);
+    }
   }
 
   onSelect(answer: any) {
     console.log(answer);
+  }
+
+  getTime():number {
+    if(this.timer) {
+      return this.timer * 1000;
+    }
+    return 0;
   }
 
 }
