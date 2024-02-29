@@ -7,4 +7,10 @@ export interface UserDetail {
   profileImageUrl?: string;
   hasCompletedRegistration?: boolean;
   email?: string;
+  playerProfile?: UserPlayerProfile;
+}
+
+export interface UserPlayerProfile {
+  numberOfCompletedSessions?: number;
+  numberOfSessionsWon?: number;
 }

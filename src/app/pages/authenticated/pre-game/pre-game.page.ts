@@ -5,7 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { SessionService } from 'src/app/service/session.service';
 import { QuizSession } from 'src/app/model/quiz.model';
 import { switchMap } from 'rxjs';
-import { UserDetail } from 'src/app/model/user-detail.model';
+import { UserDetail, UserPlayerProfile } from 'src/app/model/user-detail.model';
 
 @Component({
   selector: 'app-pre-game',
@@ -34,4 +34,17 @@ export class PreGamePage {
       .subscribe(users => this.users = users);
   }
 
+  isChampion(profile: UserPlayerProfile | undefined) {
+    if (profile?.numberOfSessionsWon === undefined) {
+      return false;
+    } else 
+      return profile.numberOfSessionsWon! > 0;
+  }
+
+  isFirstTimePlayer(profile: UserPlayerProfile | undefined) {
+    if (profile?.numberOfCompletedSessions === undefined) {
+      return true;
+    } else 
+      return profile.numberOfCompletedSessions! === 0;
+  }
 }
