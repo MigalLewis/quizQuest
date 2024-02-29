@@ -4,7 +4,7 @@ import { Firestore, collection, collectionData, doc, docData, setDoc, query, whe
 import { Observable, Subject, of, take, takeUntil } from 'rxjs';
 import { NotificationService } from './notification.service';
 import { Router } from '@angular/router';
-import { UserDetail } from './firestore.service';
+import { UserDetail } from '../model/user-detail.model';
 
 @Injectable({
   providedIn: 'root'

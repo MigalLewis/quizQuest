@@ -3,7 +3,8 @@ import { Auth, FacebookAuthProvider, GoogleAuthProvider, createUserWithEmailAndP
 import { Router } from '@angular/router';
 import {BehaviorSubject, map, of, Subject, switchMap, take} from 'rxjs';
 import { NotificationService } from './notification.service';
-import {FirestoreService, UserDetail} from './firestore.service';
+import {FirestoreService} from './firestore.service';
+import { UserDetail } from '../model/user-detail.model';
 
 @Injectable({
   providedIn: 'root'

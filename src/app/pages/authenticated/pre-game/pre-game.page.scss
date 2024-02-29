@@ -54,8 +54,8 @@ ion-content {
             .image {
                 border-radius: 50%;
                 overflow: hidden;
-                width: 3.5rem;
-                height: 2.5rem;
+                width: 3rem;
+                height: 3rem;
                 margin-left: 0.25rem;
 
                 ion-img {
@@ -70,11 +70,41 @@ ion-content {
                 font-size: .825rem;
                 font-family: var(--ion-font-play);
                 font-weight: 400;
-                width: 100%;
                 color: #000000;
                 display: inline-block;
                 text-align: center;
             }
+
+            // badges
+            .badge {
+                width: 30%;
+
+                .badge-content {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-family: var(--ion-font-play);
+
+                    ion-icon {
+                        font-size: 1.125rem;
+                    }
+
+                    .text-container {
+                        span {
+                            display: block;
+                            font-size: .813rem;
+                            text-align: left;
+                            margin-left: 0.125rem;
+                            font-weight: 500;
+                        }
+
+                        span.bottom-text {
+                            font-weight: 700;
+                        }
+                    }
+                }
+            }
+
         }
     }
 }
