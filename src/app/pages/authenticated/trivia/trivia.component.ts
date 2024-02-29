@@ -28,23 +28,20 @@ export class TriviaPage  implements OnInit, OnDestroy {
 
   constructor(private sessionService: SessionService) { 
     this.subscriptions = [];
+
   }
 
   ngOnInit() {
-    this.sessionService.getAllQuiz().subscribe(data => {
-      console.log('data');
-      console.log(data);
-    });
+    let session = this.sessionService.getSession();
+    if(session && session.quiz) {
+      this.subscriptions.push(
+        this.sessionService.getQuiz(session.quiz).subscribe(data => {
+          this.quiz = data;
+          this.nextQuestion(1);
+        })
+      );
+    }
 
-    this.subscriptions.push(
-      // TODO: X0zysjnjj3Ms2EK5WhHd should come from the session that the user joined
-      this.sessionService.getQuiz('X0zysjnjj3Ms2EK5WhHd').subscribe(data => {
-        this.quiz = data;
-        console.log('this.quiz');
-        console.log(this.quiz);
-        this.nextQuestion(1);
-      })
-    );
   }
 
   ngOnDestroy(): void {

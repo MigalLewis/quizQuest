@@ -28,8 +28,11 @@ export class SessionService {
     .pipe(takeUntil(this.dataArrived)).subscribe((session: any) => {
       if (session) {
         const users = session.users || [];
-        users.push(userID);
-        setDoc(sessionRef, { users }, { merge: true });
+        const hasUser = users.find((u:string) => u === userID);
+        if(!hasUser) {
+          users.push(userID);
+          setDoc(sessionRef, { users }, { merge: true });
+        }
         this.setSession(session);
         this.router.navigate(['authenticated', 'pre', 'game', session.gameCode ]);
         this.dataArrived.next();
