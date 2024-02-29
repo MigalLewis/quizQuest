@@ -27,4 +27,11 @@ export interface QuizSession {
     users?: string[];
     quiz?: string;
     host?: string;
+    status: SessionStatus;
+}
+
+export enum SessionStatus {
+    WaitingPlayers = 'WaitingPlayers',
+    Running = 'Running',
+    Finnished = 'Finnished',
 }
