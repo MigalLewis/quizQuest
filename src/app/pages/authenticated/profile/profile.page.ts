@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import {BackgroundComponent} from '../../../components/background/background.component';
 import {UserDetailsComponent} from '../../../components/user-details/user-details.component';
-import {FirestoreService, UserDetail} from '../../../service/firestore.service';
+import {FirestoreService} from '../../../service/firestore.service';
 import {AuthService} from '../../../service/auth.service';
 import {map, Observable, switchMap} from "rxjs";
 import {Router} from "@angular/router";
+import { UserDetail } from 'src/app/model/user-detail.model';
 
 @Component({
   selector: 'app-profile',

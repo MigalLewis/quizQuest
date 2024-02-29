@@ -1,6 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { Firestore, doc, docData, setDoc } from '@angular/fire/firestore';
 import {Observable} from "rxjs";
+import { UserDetail } from '../model/user-detail.model';
 
 const USER_COLLECTION = 'users';
 
@@ -20,12 +21,3 @@ export class FirestoreService {
   }
 }
 
-export interface UserDetail {
-  uid: string;
-  name?: string;
-  surname?: string;
-  dateOfBirth?: string;
-  profileImageUrl?: string;
-  hasCompletedRegistration?: boolean;
-  email?: string;
-}

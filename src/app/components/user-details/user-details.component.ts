@@ -4,7 +4,7 @@ import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} fr
 import {IonicModule} from '@ionic/angular';
 import {DatePipe, NgIf, TitleCasePipe} from '@angular/common';
 import {Photo} from '@capacitor/camera';
-import {UserDetail} from '../../service/firestore.service';
+import { UserDetail } from 'src/app/model/user-detail.model';
 import {FireStorageService} from '../../service/fire-storage.service';
 import {Observable} from "rxjs";
 

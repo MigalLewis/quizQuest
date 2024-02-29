@@ -3,10 +3,11 @@ import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import {Router, RouterModule} from '@angular/router';
 import { BackgroundComponent } from '../../../components/background/background.component';
-import { FirestoreService, UserDetail } from 'src/app/service/firestore.service';
+import { FirestoreService } from 'src/app/service/firestore.service';
 import {UserDetailsComponent} from '../../../components/user-details/user-details.component';
 import {AuthService} from '../../../service/auth.service';
 import {Observable, switchMap} from "rxjs";
+import { UserDetail } from 'src/app/model/user-detail.model'; 
 
 @Component({
     selector: 'app-register',

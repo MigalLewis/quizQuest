@@ -3,9 +3,10 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
-import { FirestoreService, UserDetail } from 'src/app/service/firestore.service';
+import { FirestoreService } from 'src/app/service/firestore.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { switchMap } from 'rxjs';
+import { UserDetail } from 'src/app/model/user-detail.model';
 
 @Component({
   selector: 'app-authenticated',

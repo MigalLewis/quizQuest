@@ -5,7 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { SessionService } from 'src/app/service/session.service';
 import { QuizSession } from 'src/app/model/quiz.model';
 import { switchMap } from 'rxjs';
-import { UserDetail } from 'src/app/service/firestore.service';
+import { UserDetail } from 'src/app/model/user-detail.model';
 
 @Component({
   selector: 'app-pre-game',
