@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Quiz, QuizItem, QuizSession } from '../model/quiz.model';
 import { Firestore, collection, collectionData, doc, docData, setDoc, query, where } from '@angular/fire/firestore';
-import { Observable, of, take } from 'rxjs';
+import { Observable, Subject, of, take, takeUntil } from 'rxjs';
 import { NotificationService } from './notification.service';
 import { Router } from '@angular/router';
 import { UserDetail } from './firestore.service';
@@ -12,21 +12,25 @@ import { UserDetail } from './firestore.service';
 export class SessionService {
   SESSION_COLLECTION = 'sessions';
   QUIZ_COLLECTION = 'quiz';
+  dataArrived: Subject<void>;
 
   constructor(private firestore: Firestore,
               private alertService: NotificationService,
               private router: Router
-    ) { }
+    ) { 
+      this.dataArrived = new Subject<void>();
+    }
 
   joinSession(gameCode: string, userID: string) {
     let sessionRef = doc(this.firestore, 'sessions/'+gameCode);
     docData(sessionRef)
-    .pipe(take(1)).subscribe((session: any) => {
+    .pipe(takeUntil(this.dataArrived)).subscribe((session: any) => {
       if (session) {
         const users = session.users || [];
         users.push(userID);
         setDoc(sessionRef, { users }, { merge: true });
-        this.router.navigate(['authenticated', 'pre', 'game', session.gameCode ])
+        this.router.navigate(['authenticated', 'pre', 'game', session.gameCode ]);
+        this.dataArrived.next();
       } else {
         this.alertService.presentToast(
           'top',
