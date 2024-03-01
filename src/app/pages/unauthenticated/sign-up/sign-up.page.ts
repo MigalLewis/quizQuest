@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { BackgroundComponent } from 'src/app/components/background/background.component';
@@ -12,14 +12,18 @@ import { AuthService } from 'src/app/service/auth.service';
   standalone: true,
   imports: [IonicModule, CommonModule, BackgroundComponent, ReactiveFormsModule]
 })
-export class SignUpPage {
+export class SignUpPage  implements OnInit {
 
  formGroup: FormGroup;
 
- constructor(
+ constructor( 
   private formBuilder: FormBuilder,
   private authService: AuthService) {
   this.formGroup  = this.createForm();
+ }
+
+ ngOnInit(): void {
+   this.authService.handleRedirectResult();
  }
 
   private createForm() {
