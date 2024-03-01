@@ -22,6 +22,15 @@ export interface UserAnswer {
     correct: boolean;
 }
 
+export interface SessionResults {
+    id: string;
+    userID: string;
+    sessionID: string;
+    questionID: string;
+    selectedOption: string;
+    isCorrect: boolean;
+}
+
 export interface QuizSession {
     gameCode: string;
     users?: string[];

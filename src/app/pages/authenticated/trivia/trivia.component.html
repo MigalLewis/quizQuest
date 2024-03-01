@@ -1,7 +1,24 @@
 <div class="content">
   <ion-row>
     <ion-col size="12">
-      <app-quiz-item [quizItem]="currentQuizItem" (select)="onSelect($event)"></app-quiz-item>
+      <app-quiz-item [quizItem]="currentQuizItem" 
+                      [formGroup]="quizForm">
+        <div header class="header">
+          <ion-text>Question {{currentQuizItem?.no}} of {{currentQuizItem?.total}}</ion-text>
+          <div class="time">
+            <ion-icon [src]="timeIcon" class="font-size-60"></ion-icon>
+            <ion-text>{{getTime() | date:'mm:ss'}}</ion-text>
+          </div>
+        </div>
+        <div result class="header">
+          <div *ngIf="correct === true" class="pill pill-correct">
+            <ion-text>👏🏼 Correct</ion-text>
+          </div>
+          <div *ngIf="correct === false" class="pill pill-incorrect">
+            <ion-text>😿 Incorrect</ion-text>
+          </div>
+        </div>
+      </app-quiz-item>
     </ion-col>
   </ion-row>
 </div>
