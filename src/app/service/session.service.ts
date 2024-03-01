@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Quiz, QuizItem, QuizSession } from '../model/quiz.model';
-import { Firestore, collection, collectionData, doc, docData, setDoc, query, where } from '@angular/fire/firestore';
+import { Firestore, collection, collectionData, doc, docData, setDoc, query, where, addDoc } from '@angular/fire/firestore';
 import { Observable, Subject, of, take, takeUntil } from 'rxjs';
 import { NotificationService } from './notification.service';
 import { Router } from '@angular/router';
@@ -72,5 +72,18 @@ export class SessionService {
 
   clearSession() {
     this.session = null;
+  }
+
+  saveUserResponse(sessionID: string, userID: string, questionID: string, selectedOption: string, isCorrect: boolean) {
+    let sessionResultsCollection = collection(this.firestore, 'session_results');
+    addDoc(sessionResultsCollection, {
+      userID,
+      sessionID,
+      questionID,
+      selectedOption,
+      isCorrect
+    }).then(document => {
+        // could add points to the user and maybe also the time it took to answer
+    });
   }
 }
