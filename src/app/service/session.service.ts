@@ -5,6 +5,7 @@ import { Observable, Subject, of, take, takeUntil } from 'rxjs';
 import { NotificationService } from './notification.service';
 import { Router } from '@angular/router';
 import { UserDetail } from '../model/user-detail.model';
+import { UserResponse } from '../model/ranked-player.model';
 
 @Injectable({
   providedIn: 'root'
@@ -85,5 +86,9 @@ export class SessionService {
     }).then(document => {
         // could add points to the user and maybe also the time it took to answer
     });
+  }
+
+  getAllUserResponses(): Observable<UserResponse[]> {
+    return collectionData(collection(this.firestore, 'session_results')) as Observable<UserResponse[]>;
   }
 }

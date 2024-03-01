@@ -1,13 +1,13 @@
 <ion-content [fullscreen]="true">
   <div class="content">
-    <div class="header-section">
+    <div class="header-section" *ngIf="players.length > 2">
       <div class="category">
         <ion-text>Category: Music</ion-text>
       </div>
       <app-graph [players]="players | slice:0:3"></app-graph>
     </div>
 
-    <div class="body-section">
+    <div class="body-section" *ngIf="players.length > 3">
       <ion-row class="player" *ngFor="let player of players | slice:3">
         <ion-col class="position ion-no-padding ion-no-margin">
           <ion-text>
