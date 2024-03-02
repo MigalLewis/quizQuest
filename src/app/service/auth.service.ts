@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { Auth, FacebookAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, user, User, AuthProvider } from '@angular/fire/auth';
+import { Auth, FacebookAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, user, User, AuthProvider, getRedirectResult, signInWithRedirect } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import {BehaviorSubject, map, of, Subject, switchMap, take} from 'rxjs';
 import { NotificationService } from './notification.service';
@@ -14,14 +14,14 @@ export class AuthService {
   private auth = inject(Auth);
   private router = inject(Router);
   private alertService = inject(NotificationService)
-  private firestoreService = inject(FirestoreService)
+  private firestoreService = inject(FirestoreService);
 
   googleAuth() {
-    this.handleGoogleOrFacebookAuth(new GoogleAuthProvider);
+    signInWithRedirect(this.auth, new GoogleAuthProvider());
   }
 
   facebookAuth() {
-      this.handleGoogleOrFacebookAuth(new FacebookAuthProvider);
+    signInWithRedirect(this.auth, new FacebookAuthProvider());
   }
 
   emailAndPasswordAuth(email: string, password: string) {
@@ -92,25 +92,25 @@ export class AuthService {
     }
   }
 
-  private handleGoogleOrFacebookAuth(provider: AuthProvider) {
+  handleRedirectResult() {
     let userObject: UserDetail;
-    signInWithPopup(this.auth, provider)
+
+    getRedirectResult(this.auth)
       .then(() => {
+
         this.currentUserObservable$.pipe(
-          switchMap(user => {
+          switchMap(user => { 
             if (!user) return of(null);
             userObject = this.constructUserFromAuthUser(user)
             return this.firestoreService.userInfo(user?.uid!);
-          }),
-          take(1)).subscribe(savedUser => {
-          if (savedUser) {
-            this.router.navigate(['authenticated', 'home']);
-          } else {
-            this.firestoreService.saveUser(userObject);
-            this.router.navigate(['register']);
-          }
-        });
+          }), take(1)).subscribe(savedUser => {
+            if (savedUser && savedUser.hasCompletedRegistration) {
+              this.router.navigate(['authenticated', 'home']);
+            } else {
+              this.firestoreService.saveUser(userObject);
+              this.router.navigate(['register']);
+            }
+          });
       });
-
   }
 }

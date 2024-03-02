@@ -21,7 +21,9 @@ export class LoginComponent  implements OnInit {
       this.formGroup = this.createForm();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.authService.handleRedirectResult();
+  }
 
   signInWithGoogle(){
     this.authService.googleAuth();

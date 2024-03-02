@@ -20,7 +20,7 @@ import { UserDetail } from 'src/app/model/user-detail.model';
     RouterModule]
 })
 export class AuthenticatedPage implements OnInit {
-  user!: UserDetail | any;
+  user!: UserDetail;
 
   menuOptions: { option: string, url: string }[];
 
@@ -39,7 +39,11 @@ export class AuthenticatedPage implements OnInit {
     this.authService.currentUserObservable$
     .pipe(switchMap(
       currentUser => this.firestoreService.userInfo(currentUser!.uid)))
-    .subscribe(user => this.user = user);
+    .subscribe(user => {
+      this.user = user
+      user.profileImageUrl = user.profileImageUrl
+      
+    });
   }
 
 }
