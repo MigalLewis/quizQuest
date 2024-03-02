@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'filevisor',
+  appId: 'biz.pacifish',
+  appName: 'quizQuest',
   webDir: 'www',
   server: {
     androidScheme: 'https'
