@@ -2,8 +2,8 @@
   <ion-menu contentId="authenticated">
     <ion-content>
       <div class="profile">
-        <div class="image" *ngIf="user?.profilePhoto; else placeholder">
-          <ion-img [src]="user.profilePhoto" alt=""></ion-img>
+        <div class="image" *ngIf="user?.profileImageUrl; else placeholder">
+          <ion-img [src]="user.profileImageUrl" alt=""></ion-img>
         </div>
         <ng-template #placeholder>
           <div class="default-profile-image">
@@ -18,7 +18,7 @@
             </svg>
           </div>
         </ng-template>
-        <ion-text>{{ user?.name + user?.surname }}</ion-text>
+        <ion-text *ngIf="user?.name || user?.surname">{{ user.name +' '+user.surname }}</ion-text>
       </div>
       <hr>
       <div class="menu-options">
