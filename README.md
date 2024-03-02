@@ -1,4 +1,4 @@
-# Filevisor
+# quizQuest
 
 ### Techstack
 This project is built with *Ionic/Angular and AngularFire (Auth, Firestore, Storage)*
