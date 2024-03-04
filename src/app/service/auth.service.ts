@@ -1,10 +1,12 @@
 import { Injectable, inject } from '@angular/core';
-import { Auth, FacebookAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, user, User, AuthProvider, getRedirectResult, signInWithRedirect } from '@angular/fire/auth';
+import { Auth, FacebookAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, user, User, AuthProvider, getRedirectResult, signInWithRedirect, signInWithCredential } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import {BehaviorSubject, map, of, Subject, switchMap, take} from 'rxjs';
 import { NotificationService } from './notification.service';
 import {FirestoreService} from './firestore.service';
 import { UserDetail } from '../model/user-detail.model';
+import { Platform } from '@ionic/angular';
+import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +17,52 @@ export class AuthService {
   private router = inject(Router);
   private alertService = inject(NotificationService)
   private firestoreService = inject(FirestoreService);
+  private platform = inject(Platform)
+
+  constructor() {
+    this.platform.ready().then(() => {
+      GoogleAuth.initialize()
+    })
+  }
 
   googleAuth() {
-    signInWithRedirect(this.auth, new GoogleAuthProvider());
+    let userObject: UserDetail;
+
+    GoogleAuth.signIn().then((googleUser) => {
+      const credential = GoogleAuthProvider.credential(googleUser.authentication.idToken);
+
+      console.log('credential',credential);
+      
+
+      signInWithCredential(this.auth, credential)
+      .then(() => {
+        this.currentUserObservable$.pipe(
+          switchMap(user => { 
+            console.log('reached_ here');
+            
+            if (!user) return of(null);
+            userObject = this.constructUserFromAuthUser(user)
+            return this.firestoreService.userInfo(user?.uid!);
+          }), take(1)).subscribe(savedUser => {
+            if (savedUser && savedUser.hasCompletedRegistration) {
+              this.router.navigate(['authenticated', 'home']);
+            } else {
+              this.firestoreService.saveUser(userObject);
+              this.router.navigate(['register']);
+            }
+          });
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        const email = error.email;
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        console.log(error);
+        
+      });
+    })
+    .catch(er => console.log('er', er)
+    );
   }
 
   facebookAuth() {
