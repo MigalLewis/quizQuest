@@ -23,7 +23,6 @@ export class SignUpPage  implements OnInit {
  }
 
  ngOnInit(): void {
-   this.authService.handleRedirectResult();
  }
 
   private createForm() {
