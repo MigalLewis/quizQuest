@@ -1,10 +1,12 @@
 import { Injectable, inject } from '@angular/core';
-import { Auth, FacebookAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, user, User, AuthProvider, getRedirectResult, signInWithRedirect } from '@angular/fire/auth';
+import { Auth, FacebookAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, user, User, AuthProvider, getRedirectResult, signInWithRedirect, signInWithCredential } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import {BehaviorSubject, map, of, Subject, switchMap, take} from 'rxjs';
 import { NotificationService } from './notification.service';
 import {FirestoreService} from './firestore.service';
 import { UserDetail } from '../model/user-detail.model';
+import { FirebaseAuthentication } from '@capacitor-firebase/authentication';
+
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +19,40 @@ export class AuthService {
   private firestoreService = inject(FirestoreService);
 
   googleAuth() {
-    signInWithRedirect(this.auth, new GoogleAuthProvider());
+    let userObject: UserDetail;
+
+    FirebaseAuthentication.signInWithGoogle()
+      .then((result) => {
+        const idToken = result.credential?.idToken;
+        const credential = GoogleAuthProvider.credential(idToken);
+
+        signInWithCredential(this.auth, credential)
+        .then((authUser) => {
+
+        const {user} = authUser;
+
+        if (result.additionalUserInfo?.isNewUser) {
+          let userObject = this.constructUserFromAuthUser(user);
+          console.log(userObject);
+          
+          this.firestoreService.saveUser(userObject);
+          this.router.navigate(['register']);
+        } else {
+          // If user found, check registration status and route accordingly
+          this.firestoreService.userInfo(user?.uid!)
+            .pipe(take(1)).subscribe(savedUser => {
+              if (savedUser && savedUser.hasCompletedRegistration) {
+                this.router.navigate(['authenticated', 'home']);
+              } else {
+                this.router.navigate(['register']);
+              }
+            })
+        }
+         })
+          .catch(error => {
+            console.log(error.message);
+          })
+      })
   }
 
   facebookAuth() {
@@ -90,27 +125,5 @@ export class AuthService {
       profileImageUrl: user.photoURL ? user.photoURL : '',
       hasCompletedRegistration: false
     }
-  }
-
-  handleRedirectResult() {
-    let userObject: UserDetail;
-
-    getRedirectResult(this.auth)
-      .then(() => {
-
-        this.currentUserObservable$.pipe(
-          switchMap(user => { 
-            if (!user) return of(null);
-            userObject = this.constructUserFromAuthUser(user)
-            return this.firestoreService.userInfo(user?.uid!);
-          }), take(1)).subscribe(savedUser => {
-            if (savedUser && savedUser.hasCompletedRegistration) {
-              this.router.navigate(['authenticated', 'home']);
-            } else {
-              this.firestoreService.saveUser(userObject);
-              this.router.navigate(['register']);
-            }
-          });
-      });
   }
 }

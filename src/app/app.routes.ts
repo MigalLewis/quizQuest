@@ -18,7 +18,7 @@ import { CompletedGamePage } from './pages/authenticated/completed-game/complete
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'landing',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {

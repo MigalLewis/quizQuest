@@ -12,9 +12,8 @@
     </ion-row>
     <div class="body ion-text-center">
       <ion-row class="social-media-icons">
-        <ion-col class="social-media-icon">
-          <svg (click)="signInWithGoogle()" width="48" height="48" viewBox="0 0 48 48" fill="none"
-            xmlns="http://www.w3.org/2000/svg">
+        <ion-col class="social-media-icon" (click)="signInWithGoogle(); $event.preventDefault()">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M45.12 24.5C45.12 22.94 44.98 21.44 44.72 20H24V28.51H35.84C35.33 31.26 33.78 33.59 31.45 35.15V40.67H38.56C42.72 36.84 45.12 31.2 45.12 24.5V24.5Z"
               fill="#4285F4" />

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  useEmulators: true,
+  useEmulators: false, // TODO: Find out how to use emulators in android
   firebase: {
     apiKey: "AIzaSyC5PemASz1ZjWui_3X3r3lA7qfPPuTK3nY",
     authDomain: "quizquest-1dca2.firebaseapp.com",
