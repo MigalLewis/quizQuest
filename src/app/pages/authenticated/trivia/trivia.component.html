@@ -4,7 +4,7 @@
       <app-quiz-item [quizItem]="currentQuizItem" 
                       [formGroup]="quizForm">
         <div header class="header">
-          <ion-text>Question {{currentQuizItem?.no}} of {{currentQuizItem?.total}}</ion-text>
+          <ion-text>Question {{currentQuizItem?.no}} of {{quiz.quizItems.length}}</ion-text>
           <div class="time">
             <ion-icon [src]="timeIcon" class="font-size-60"></ion-icon>
             <ion-text>{{getTime() | date:'mm:ss'}}</ion-text>
