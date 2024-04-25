@@ -135,7 +135,7 @@ export class TriviaPage  implements OnInit, OnDestroy {
     this.quizForm.reset()
     this.correct = undefined;
     if((currentNo == this.quiz.quizItems.length)){
-      this.router.navigate(['authenticated','completed', 'game']);
+      this.router.navigate(['authenticated','completed', 'game', this.session?.gameCode]);
     } else {
       this.nextQuestion(currentNo + 1);
     }

@@ -5,6 +5,8 @@ import { IonicModule } from '@ionic/angular';
 import { GraphComponent } from 'src/app/componenents/graph/graph.component';
 import { RankedPlayer, UserResponse } from 'src/app/model/ranked-player.model';
 import { SessionService } from 'src/app/service/session.service';
+import { Session } from 'inspector';
+import { Quiz, QuizSession } from 'src/app/model/quiz.model';
 
 @Component({
   selector: 'app-completed-game',
@@ -15,20 +17,30 @@ import { SessionService } from 'src/app/service/session.service';
 })
 export class CompletedGamePage implements OnInit {
   players: RankedPlayer[];
+  session: QuizSession | null | undefined;
+  quiz: Quiz | null | undefined;
 
   constructor(private sessionService: SessionService) { 
     this.players = [];
+
   }
 
   ngOnInit() {
+    this.session = this.sessionService.getSession();
+    if(this.session?.quiz) {
+      this.sessionService.getQuiz(this.session?.quiz).subscribe(data => {
+        this.quiz = data;
+      });
+    }
+    this.rankPlayers();
   }
 
   rankPlayers() {
-    this.sessionService.getAllUserResponses().subscribe(data => {
-      const groupedResponses = this.groupUserResponsesByUserID(data);
-      const userScores = this.calculateScore(groupedResponses);
-      this.createRankedPlayers(userScores);
-    })
+      this.sessionService.getAllUserResponses().subscribe(data => {
+        const groupedResponses = this.groupUserResponsesByUserID(data);
+        const userScores = this.calculateScore(groupedResponses);
+        this.createRankedPlayers(userScores);
+      });
   }
 
   groupUserResponsesByUserID(responses: UserResponse[]): { [userID: string]: UserResponse[] } {

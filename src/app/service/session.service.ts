@@ -89,6 +89,7 @@ export class SessionService {
   }
 
   getAllUserResponses(): Observable<UserResponse[]> {
-    return collectionData(collection(this.firestore, 'session_results')) as Observable<UserResponse[]>;
+    const sessionResponsesQuery  = query(collection(this.firestore, 'session_results'), where('sessionID', '==',this.session?.gameCode));
+    return collectionData(sessionResponsesQuery) as Observable<UserResponse[]>;
   }
 }

@@ -67,7 +67,7 @@ export const routes: Routes = [
         component: PreGamePage
       },
       {
-        path: 'completed/game',
+        path: 'completed/game/:gameCode',
         component: CompletedGamePage
       }
     ]
