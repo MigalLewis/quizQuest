@@ -1,10 +1,13 @@
 <ion-content [fullscreen]="true">
   <div class="content">
-    <div class="header-section" *ngIf="players.length > 2">
+    <div class="header-section" >
       <div class="category">
-        <ion-text>Category: Music</ion-text>
+        <ion-text>Category: {{quiz?.topic}}</ion-text>
       </div>
-      <app-graph [players]="players | slice:0:3"></app-graph>
+      <div *ngIf="players.length > 2">
+        <app-graph [players]="players | slice:0:3"></app-graph>
+      </div>
+      
     </div>
 
     <div class="body-section" *ngIf="players.length > 3">
